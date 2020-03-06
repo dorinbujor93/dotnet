@@ -7,10 +7,11 @@ namespace W1_Class
         static void Main(string[] args)
         {
             // Exercise1();
-            // Exercise2();
+            //Exercise2();
             // Exercise3();
             //Exercise5(); 
-            Exercise6();
+            //Exercise6();
+            Exercise7();
         }
 
         static void Exercise1()
@@ -37,14 +38,14 @@ namespace W1_Class
             char operation;
             int firstNr;
             int secondNr;
-            int result;
+            double result;
             Console.WriteLine("Please insert first number: \n");
             firstNr = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Please choose an operation from (+,-,*,/)\n");
             operation = Console.ReadKey().KeyChar;
 
-            Console.WriteLine("Please insert second number: \n");
+            Console.WriteLine("\nPlease insert second number: \n");
             secondNr = Convert.ToInt32(Console.ReadLine());
 
 
@@ -63,7 +64,7 @@ namespace W1_Class
                     Console.WriteLine($"\n You result is: {result}");
                     break;
                 case '/':
-                    result = firstNr / secondNr;
+                    result = (double)firstNr / secondNr;
                     Console.WriteLine($"\n You result is: {result}");
                     break;
 
@@ -121,13 +122,15 @@ namespace W1_Class
             c = Convert.ToInt32(Console.ReadLine());
 
 
-            if(a==b && b == c)
+            if (a == b && b == c)
             {
                 Console.WriteLine("\n This triangle is Equilateral!");
-            } else if(a == b || a == c || b==c)
+            }
+            else if (a == b || a == c || b == c)
             {
                 Console.WriteLine("\n This triangle is Isosceles!");
-            } else
+            }
+            else
             {
                 Console.WriteLine("\n This triangle is Scalene!");
             }
@@ -149,7 +152,50 @@ namespace W1_Class
                 Console.Write($"{even} ");
             }
             Console.WriteLine($"\nThe Sum of even Natural Number up to {termsNumber} terms: {sum}");
+        }
 
+        static void Exercise7()
+        {
+
+            Console.WriteLine("Please insert outside temp \n");
+
+            bool isTemp = int.TryParse(Console.ReadLine(), out int temperature);
+            if (isTemp)
+            {
+                if (temperature < 0)
+                {
+                    Console.WriteLine("Freezing!");
+                }
+                else if (temperature <= 10)
+                {
+                    Console.WriteLine("Very Cold weather!");
+                }
+                else if (temperature <= 20)
+                {
+                    Console.WriteLine("Cold weather!");
+                }
+                else if (temperature <= 30)
+                {
+                    Console.WriteLine("Normal weather!");
+                }
+                else if (temperature <= 40)
+                {
+                    Console.WriteLine("Its Hot!");
+                }
+                else
+                {
+                    Console.WriteLine("Its Very Hot!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Something went wrong!");
+
+            }
+        }
+
+        static void Exercise8()
+        {
 
         }
     }
