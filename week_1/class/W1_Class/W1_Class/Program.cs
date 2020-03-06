@@ -6,9 +6,10 @@ namespace W1_Class
     {
         static void Main(string[] args)
         {
-           // Exercise1();
-           // Exercise2();
-            Exercise3();
+            // Exercise1();
+            // Exercise2();
+            // Exercise3();
+            Exercise4();
         }
 
         static void Exercise1()
@@ -89,5 +90,29 @@ namespace W1_Class
                 Console.WriteLine(" - It's something else! \n");
             }
         }
+
+        static void Exercise4()
+        {
+            int height;
+            height = Convert.ToInt32(Console.ReadLine());
+
+
+
+
+            if (height <= 140)
+            {
+                Console.WriteLine("The person is Dwarf. \n");
+            }
+            else if (height <= 180)
+            {
+                Console.WriteLine("The person is normal. \n");
+            }
+            else
+            {
+                Console.WriteLine("The person is pretty high. \n");
+            }
+        }
+
+
     }
 }
