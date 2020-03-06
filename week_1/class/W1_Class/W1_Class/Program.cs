@@ -9,7 +9,8 @@ namespace W1_Class
             // Exercise1();
             // Exercise2();
             // Exercise3();
-            Exercise4();
+            //Exercise5(); 
+            Exercise6();
         }
 
         static void Exercise1()
@@ -72,7 +73,7 @@ namespace W1_Class
         static void Exercise3()
         {
             char character;
-            string vovels = "aeiouAEIOU";
+            string vovels = "aeiou";
             string digit = "1234567890";
             Console.WriteLine("Please insert a character \n");
             character = Console.ReadKey().KeyChar;
@@ -96,9 +97,6 @@ namespace W1_Class
             int height;
             height = Convert.ToInt32(Console.ReadLine());
 
-
-
-
             if (height <= 140)
             {
                 Console.WriteLine("The person is Dwarf. \n");
@@ -112,7 +110,47 @@ namespace W1_Class
                 Console.WriteLine("The person is pretty high. \n");
             }
         }
+        static void Exercise5()
+        {
+            int a, b, c;
+            Console.WriteLine("Insert edge A lenght: \n");
+            a = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Insert edge B lenght: \n");
+            b = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Insert edge C lenght: \n");
+            c = Convert.ToInt32(Console.ReadLine());
 
 
+            if(a==b && b == c)
+            {
+                Console.WriteLine("\n This triangle is Equilateral!");
+            } else if(a == b || a == c || b==c)
+            {
+                Console.WriteLine("\n This triangle is Isosceles!");
+            } else
+            {
+                Console.WriteLine("\n This triangle is Scalene!");
+            }
+        }
+
+        static void Exercise6()
+        {
+            int termsNumber;
+            int even = 0;
+            int sum = 0;
+            Console.WriteLine("Please input number of terms!\n");
+            termsNumber = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("The even numbers are: ");
+            for (int i = 0; i < termsNumber; i++)
+            {
+                even += 2;
+                sum += even;
+                Console.Write($"{even} ");
+            }
+            Console.WriteLine($"\nThe Sum of even Natural Number up to {termsNumber} terms: {sum}");
+
+
+        }
     }
 }
