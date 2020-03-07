@@ -6,13 +6,53 @@ namespace W1_Class
     {
         static void Main(string[] args)
         {
-            // Exercise1();
-            //Exercise2();
-            // Exercise3();
-            //Exercise5(); 
-            //Exercise6();
-            //Exercise7();
-            Exercise8();
+            Console.WriteLine("Please insert exercise number \n");
+            if (int.TryParse(Console.ReadLine(), out int exNumber))
+            {
+                switch (exNumber)
+                {
+                    case 1:
+                        Exercise1();
+                        break;
+                    case 2:
+                        Exercise2();
+                        break;
+                    case 3:
+                        Exercise3();
+                        break;
+                    case 4:
+                        Exercise4();
+                        break;
+                    case 5:
+                        Exercise5();
+                        break;
+                    case 6:
+                        Exercise6();
+                        break;
+                    case 7:
+                        Exercise7();
+                        break;
+                    case 8:
+                        Exercise8();
+                        break;
+                    case 9:
+                        Exercise9();
+                        break;
+                    case 10:
+                        //Exercise10();
+                        break;
+                    case 11:
+                        //Exercise11();
+                        break;
+                    case 12:
+                        //Exercise12();
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Wrong exercise number!");
+            }
         }
 
         static void Exercise1()
@@ -241,6 +281,29 @@ namespace W1_Class
             else
             {
                 Console.WriteLine("Data format is wrong!\n");
+            }
+        }
+
+        static void Exercise9()
+        {
+            Console.WriteLine("How many Fibonacci series numbers you want to display?\n");
+            if (int.TryParse(Console.ReadLine(), out int fibNrCount))
+            {
+                int term1 = 0;
+                int term2 = 1;
+                int nextterm;
+                for (int i = 0; i < fibNrCount; i++)
+                {
+                    Console.Write($"{term1} ");
+                    nextterm = term1 + term2;
+                    term1 = term2;
+                    term2 = nextterm;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Data format is wrong!\n");
+
             }
         }
     }
