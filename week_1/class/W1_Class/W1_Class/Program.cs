@@ -48,7 +48,7 @@ namespace W1_Class
                         Exercise12();
                         break;
                     case 13:
-                        Exercise12();
+                        Exercise13();
                         break;
                 }
             }
@@ -397,7 +397,7 @@ namespace W1_Class
                     int[] newArr = new int[arrSize + 1];
                     for (int i = 0; i < arrSize + 1; i++)
                     {
-                        if (i < position -1)
+                        if (i < position - 1)
                         {
                             newArr[i] = initialArr[i];
                         }
@@ -433,5 +433,41 @@ namespace W1_Class
             }
         }
 
+        static void Exercise13()
+        {
+            Console.WriteLine("Input the size of the square matrix : \n");
+            if (int.TryParse(Console.ReadLine(), out int size))
+            {
+                int[,] matrix = new int[size, size];
+                int sum = 0;
+                string diagValues = "";
+                for (int i = 0; i < size; i++)
+                {
+                    for (int j = 0; j < size; j++)
+                    {
+                        Console.WriteLine($"element - [{i}],[{j}] :");
+                        matrix[i, j] = int.Parse(Console.ReadLine());
+                        if (i == j)
+                        {
+                            sum += matrix[i, j];
+                            diagValues += sum.ToString() + " ";
+                        }
+                    }
+                }
+                Console.WriteLine("Your matrix is: \n");
+
+                for (int i = 0; i < size; i++)
+                {
+                    for (int j = 0; j < size; j++)
+                    {
+                        Console.Write(matrix[i, j] + " ");
+                    }
+                    Console.WriteLine();
+                }
+                Console.WriteLine($"Addition of the Diagonal elements is: {sum} ( {diagValues})\n");
+
+            }
+        }
+         
     }
 }
