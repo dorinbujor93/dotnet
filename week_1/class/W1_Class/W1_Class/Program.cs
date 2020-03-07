@@ -42,7 +42,7 @@ namespace W1_Class
                         Exercise10();
                         break;
                     case 11:
-                        //Exercise11();
+                        Exercise11();
                         break;
                     case 12:
                         //Exercise12();
@@ -331,5 +331,37 @@ namespace W1_Class
                 Console.WriteLine("Data format is wrong!\n");
             }
         }
+        static void Exercise11()
+        {
+            int[] valuesArr = new int[] { 4, 5, 63, 5, 3, 3, 4, 6, 7, 87, 5, 4, 3, 2, 5, 7, 8 };
+            int[] freq = new int[valuesArr.Length];
+            int visited = -1;
+            for (int i = 0; i < valuesArr.Length; i++)
+            {
+                int cnt = 1;
+                for (int j = i + 1; j < valuesArr.Length; j++)
+                {
+                    if (valuesArr[i] == valuesArr[j])
+                    {
+                        cnt++;
+                        freq[j] = visited;
+                    }
+                }
+                if (freq[i] != visited)
+                {
+                    freq[i] = cnt;
+                }
+            }
+            Console.WriteLine("Elements count:");
+            for (int i = 0; i < valuesArr.Length; i++)
+            {
+                if (freq[i] != -1)
+                {
+                    Console.Write(" (" + valuesArr[i] + " -> " + freq[i] + ") ");
+                }
+            }
+
+        }
+
     }
 }
