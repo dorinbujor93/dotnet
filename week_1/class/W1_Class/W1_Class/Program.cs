@@ -11,7 +11,8 @@ namespace W1_Class
             // Exercise3();
             //Exercise5(); 
             //Exercise6();
-            Exercise7();
+            //Exercise7();
+            Exercise8();
         }
 
         static void Exercise1()
@@ -196,7 +197,51 @@ namespace W1_Class
 
         static void Exercise8()
         {
+            bool surcharge = false;
+            decimal charge;
 
+            Console.WriteLine("Please input customer name\n");
+            string customerName = Console.ReadLine();
+            Console.WriteLine("Please input customer IDNO\n");
+            bool isId = int.TryParse(Console.ReadLine(), out int customerId);
+            Console.WriteLine("Please input ammount consumed\n");
+            bool isConsumedUnit = int.TryParse(Console.ReadLine(), out int consumedUnits);
+            if (isId && isConsumedUnit && consumedUnits > 0)
+            {
+                if (consumedUnits < 200)
+                {
+                    charge = 1.2m;
+                }
+                else if (consumedUnits < 400)
+                {
+                    charge = 1.5m;
+
+                }
+                else if (consumedUnits < 600)
+                {
+                    charge = 1.8m;
+                    surcharge = true;
+                }
+                else
+                {
+                    charge = 2m;
+                    surcharge = true;
+                }
+                decimal chargesAmt = consumedUnits * charge;
+                decimal surchargeAmt = surcharge ? chargesAmt * 0.15m : 0;
+                decimal paidAmt = chargesAmt + surchargeAmt;
+
+                Console.WriteLine($"Customer IDNO: {customerId}\n");
+                Console.WriteLine($"Customer Name: {customerName}\n");
+                Console.WriteLine($"Units Consumed: {consumedUnits}\n");
+                Console.WriteLine($"Amount Charges @Rs. {String.Format("{0:N2}", charge)} per unit: {String.Format("{0:N2}", chargesAmt)}\n");
+                Console.WriteLine($"Surcharge ammount: {String.Format("{0:N2}", surchargeAmt)}\n");
+                Console.WriteLine($"Net Amount Paid By the Customer: {String.Format("{0:N2}", paidAmt)}\n");
+            }
+            else
+            {
+                Console.WriteLine("Data format is wrong!\n");
+            }
         }
     }
 }
