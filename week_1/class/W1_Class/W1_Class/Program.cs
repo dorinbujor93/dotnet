@@ -39,7 +39,7 @@ namespace W1_Class
                         Exercise9();
                         break;
                     case 10:
-                        //Exercise10();
+                        Exercise10();
                         break;
                     case 11:
                         //Exercise11();
@@ -304,6 +304,31 @@ namespace W1_Class
             {
                 Console.WriteLine("Data format is wrong!\n");
 
+            }
+        }
+
+
+        static void Exercise10()
+        {
+            Console.WriteLine("How many rows you want to display?\n");
+            if (int.TryParse(Console.ReadLine(), out int rowsCount))
+            {
+                for (int i = 1; i <= rowsCount; i++)
+                {
+                    for (int j = 1; j <= i; j++)
+                    {
+                        Console.Write(j + " ");
+                    }
+                    for (int j = i - 1; j > 0; j--)
+                    {
+                        Console.Write(j + " ");
+                    }
+                    Console.WriteLine();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Data format is wrong!\n");
             }
         }
     }
