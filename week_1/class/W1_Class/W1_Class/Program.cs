@@ -45,7 +45,10 @@ namespace W1_Class
                         Exercise11();
                         break;
                     case 12:
-                        //Exercise12();
+                        Exercise12();
+                        break;
+                    case 13:
+                        Exercise12();
                         break;
                 }
             }
@@ -361,6 +364,73 @@ namespace W1_Class
                 }
             }
 
+        }
+
+        static void Exercise12()
+        {
+            Console.WriteLine("Input the size of the array (positive integer)");
+            if (int.TryParse(Console.ReadLine(), out int arrSize) && arrSize > 0)
+            {
+                Console.WriteLine($"Input {arrSize} elements in the array in ascending order:\n");
+                int element;
+                int[] initialArr = new int[arrSize];
+
+                for (int i = 0; i < arrSize; i++)
+                {
+                    Console.WriteLine($"Element - {i}:");
+                    if (int.TryParse(Console.ReadLine(), out element))
+                    {
+                        initialArr[i] = element;
+                    }
+                    else
+                    {
+                        throw new Exception("You are dumb!");
+                    }
+                }
+
+                Console.WriteLine("Input the value to be inserted\n");
+                bool isValue = int.TryParse(Console.ReadLine(), out int newElement);
+                Console.WriteLine("Input the position to be inserted at\n");
+                bool isPosition = int.TryParse(Console.ReadLine(), out int position);
+                if (isValue && isPosition)
+                {
+                    int[] newArr = new int[arrSize + 1];
+                    for (int i = 0; i < arrSize + 1; i++)
+                    {
+                        if (i < position -1)
+                        {
+                            newArr[i] = initialArr[i];
+                        }
+                        else if (i == position - 1)
+                        {
+                            newArr[i] = newElement;
+                        }
+                        else
+                        {
+                            newArr[i] = initialArr[i - 1];
+                        }
+                    }
+                    Console.WriteLine("Initial Array: ");
+                    for (int i = 0; i < initialArr.Length; i++)
+                    {
+                        Console.Write(initialArr[i] + " ");
+                    }
+                    Console.WriteLine("\nUpdated Array: ");
+                    for (int i = 0; i < newArr.Length; i++)
+                    {
+                        Console.Write(newArr[i] + " ");
+                    }
+
+                }
+                else
+                {
+                    throw new Exception("Wrong data format!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Wrong data format!");
+            }
         }
 
     }
