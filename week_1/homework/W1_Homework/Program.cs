@@ -19,7 +19,7 @@ namespace W1_Homework
                         Ex2();
                         break;
                     case 3:
-                        Ex1();
+                        Ex3();
                         break;
                     case 4:
                         Ex1();
@@ -60,7 +60,6 @@ namespace W1_Homework
 
         static void Ex2()
         {
-
             int[] unsortedArr = new int[] { 1, 4, 5, 6, 75, 5, 5, 6, 5, 5, 5, 2, 4, 5, 5, 5 };
             Console.WriteLine("This is the unsorted array:");
             foreach (int i in unsortedArr)
@@ -91,6 +90,31 @@ namespace W1_Homework
                 }
             }
             Console.WriteLine("\nThere is no element with more than 50% appearences!");
+        }
+
+        static void Ex3()
+        {
+            Console.WriteLine("Please input a string for char counting:\n");
+            string toCountString = Console.ReadLine();
+            var charCount = new Dictionary<char, int>();
+
+            foreach(char ch in toCountString)
+            {
+                if (charCount.ContainsKey(ch))
+                {
+                    charCount[ch] += 1;
+                }
+                else
+                {
+                    charCount[ch] = 1;
+                }
+            }
+            Console.WriteLine("Character | Count \n");
+            foreach(var chToCnt in charCount)
+            {
+                Console.WriteLine($"{chToCnt.Key} | {chToCnt.Value}");
+            }
+
         }
     }
 }
