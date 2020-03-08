@@ -22,7 +22,13 @@ namespace W1_Homework
                         Ex3();
                         break;
                     case 4:
-                        Ex1();
+                        Ex4();
+                        break;
+                    case 5:
+                        Ex5();
+                        break;
+                    case 6:
+                        Ex6();
                         break;
                 }
             }
@@ -98,7 +104,7 @@ namespace W1_Homework
             string toCountString = Console.ReadLine();
             var charCount = new Dictionary<char, int>();
 
-            foreach(char ch in toCountString)
+            foreach (char ch in toCountString)
             {
                 if (charCount.ContainsKey(ch))
                 {
@@ -110,11 +116,67 @@ namespace W1_Homework
                 }
             }
             Console.WriteLine("Character | Count \n");
-            foreach(var chToCnt in charCount)
+            foreach (var chToCnt in charCount)
             {
                 Console.WriteLine($"{chToCnt.Key} | {chToCnt.Value}");
             }
 
+        }
+
+        static void Ex4()
+        {
+            int[] listElements = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            LinkedList<int> linkedList = new LinkedList<int>(listElements);
+            DispalyLinkedList(linkedList);
+            LinkedListNode<int> head = linkedList.First;
+
+            while (head.Next != null)
+            {
+                var next = head.Next;
+                linkedList.Remove(next);
+                linkedList.AddFirst(next.Value);
+            }
+
+            DispalyLinkedList(linkedList);
+
+        }
+        static void Ex5()
+        {
+            int[] listElements = new[] { 11, 2, 3, 3, 55, 46, 7, 3, 9, 11 };
+            LinkedList<int> linkedList = new LinkedList<int>(listElements);
+            DispalyLinkedList(linkedList);
+         
+
+
+        }
+
+        static void Ex6()
+        {
+            string sentence = "Given a string s consists of upper or lower case alphabets and empty space characters";
+            int len = 0;
+
+            for (int i = sentence.Length - 1; i >= 0; i--)
+            {
+                if (sentence[i] != ' ')
+                {
+                    len++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            Console.WriteLine($"Last word in string: \n{sentence}\n - is {len} characters long \n");
+        }
+
+        //Fct
+        public static void DispalyLinkedList(LinkedList<int> lList)
+        {
+            Console.WriteLine("Linked List elements:");
+            foreach (int element in lList)
+            {
+                Console.Write(element + " ");
+            }
         }
     }
 }
