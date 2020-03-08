@@ -16,7 +16,7 @@ namespace W1_Homework
                         Ex1();
                         break;
                     case 2:
-                        Ex1();
+                        Ex2();
                         break;
                     case 3:
                         Ex1();
@@ -56,6 +56,41 @@ namespace W1_Homework
                 hsNoDuplicates += ch;
             }
             Console.WriteLine($"\nHashSet No duplicates: {hsNoDuplicates}");
+        }
+
+        static void Ex2()
+        {
+
+            int[] unsortedArr = new int[] { 1, 4, 5, 6, 75, 5, 5, 6, 5, 5, 5, 2, 4, 5, 5, 5 };
+            Console.WriteLine("This is the unsorted array:");
+            foreach (int i in unsortedArr)
+            {
+                Console.Write(i + " ");
+            }
+
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+
+            for (int i = 0; i < unsortedArr.Length; i++)
+            {
+                if (dict.ContainsKey(unsortedArr[i]))
+                {
+                    int cnt = dict[unsortedArr[i]] + 1;
+                    if (cnt > unsortedArr.Length / 2)
+                    {
+                        Console.WriteLine($"\nElement with more than 50% appearences is: {unsortedArr[i]}");
+                        return;
+                    }
+                    else
+                    {
+                        dict[unsortedArr[i]] = cnt;
+                    }
+                }
+                else
+                {
+                    dict[unsortedArr[i]] = 1;
+                }
+            }
+            Console.WriteLine("\nThere is no element with more than 50% appearences!");
         }
     }
 }
