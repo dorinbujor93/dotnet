@@ -142,12 +142,35 @@ namespace W1_Homework
         }
         static void Ex5()
         {
-            int[] listElements = new[] { 11, 2, 3, 3, 55, 46, 7, 3, 9, 11 };
+            int[] listElements = new[] { 11, 2, 3, 3, 12, 46, 11, 3, 9, 11, 12 };
             LinkedList<int> linkedList = new LinkedList<int>(listElements);
             DispalyLinkedList(linkedList);
-         
 
+            LinkedListNode<int> current = linkedList.First;
 
+            HashSet<int> hashSet = new HashSet<int>();
+            HashSet<LinkedListNode<int>> toRemove = new HashSet<LinkedListNode<int>>();
+
+            while (current != null)
+            {
+                int currentVal = current.Value;
+                if (hashSet.Contains(currentVal))
+                {
+                    toRemove.Add(current);
+                }
+                else
+                {
+                    hashSet.Add(currentVal);
+                }
+                current = current.Next;
+            }
+
+            foreach (LinkedListNode<int> elem in toRemove)
+            {
+                linkedList.Remove(elem);
+            }
+
+            DispalyLinkedList(linkedList);
         }
 
         static void Ex6()
@@ -175,6 +198,8 @@ namespace W1_Homework
             Console.WriteLine("Linked List elements:");
             foreach (int element in lList)
             {
+                Console.Write(element + " ");
+                Console.Write(element + " ");
                 Console.Write(element + " ");
             }
         }
