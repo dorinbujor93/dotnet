@@ -142,16 +142,7 @@ namespace W1_Homework
         }
 
 
-        static LinkedListNode<int> rec(LinkedListNode<int> head, LinkedList<int> linkedList)
-        {
-            if(head.Next != null)
-            {
-                var next = head.Next;
-                linkedList.Remove(next);
-                linkedList.AddFirst(next.Value);
-            }
-            return head.Next;
-        }
+     
         static void Ex5()
         {
             int[] listElements = new[] { 11, 2, 3, 3, 12, 46, 11, 3, 9, 11, 12 };
