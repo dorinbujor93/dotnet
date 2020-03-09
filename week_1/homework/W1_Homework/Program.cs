@@ -140,37 +140,29 @@ namespace W1_Homework
             DispalyLinkedList(linkedList);
 
         }
+
+
+        static LinkedListNode<int> rec(LinkedListNode<int> head, LinkedList<int> linkedList)
+        {
+            if(head.Next != null)
+            {
+                var next = head.Next;
+                linkedList.Remove(next);
+                linkedList.AddFirst(next.Value);
+            }
+            return head.Next;
+        }
         static void Ex5()
         {
             int[] listElements = new[] { 11, 2, 3, 3, 12, 46, 11, 3, 9, 11, 12 };
             LinkedList<int> linkedList = new LinkedList<int>(listElements);
             DispalyLinkedList(linkedList);
+            HashSet<int> hashSet = new HashSet<int>(linkedList);
 
-            LinkedListNode<int> current = linkedList.First;
+            //In case we need a linked list
+            LinkedList<int> noDupesLinkedList = new LinkedList<int>(hashSet);
 
-            HashSet<int> hashSet = new HashSet<int>();
-            HashSet<LinkedListNode<int>> toRemove = new HashSet<LinkedListNode<int>>();
-
-            while (current != null)
-            {
-                int currentVal = current.Value;
-                if (hashSet.Contains(currentVal))
-                {
-                    toRemove.Add(current);
-                }
-                else
-                {
-                    hashSet.Add(currentVal);
-                }
-                current = current.Next;
-            }
-
-            foreach (LinkedListNode<int> elem in toRemove)
-            {
-                linkedList.Remove(elem);
-            }
-
-            DispalyLinkedList(linkedList);
+            DispalyLinkedList(noDupesLinkedList);
         }
 
         static void Ex6()
@@ -195,11 +187,9 @@ namespace W1_Homework
         //Fct
         public static void DispalyLinkedList(LinkedList<int> lList)
         {
-            Console.WriteLine("Linked List elements:");
+            Console.WriteLine("\nLinked List elements:");
             foreach (int element in lList)
             {
-                Console.Write(element + " ");
-                Console.Write(element + " ");
                 Console.Write(element + " ");
             }
         }
