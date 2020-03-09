@@ -125,24 +125,29 @@ namespace W1_Homework
 
         static void Ex4()
         {
-            int[] listElements = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            int[] listElements = new[] { 1, 2, 3, 4, 5, 6, 7 };
             LinkedList<int> linkedList = new LinkedList<int>(listElements);
-            DispalyLinkedList(linkedList);
-            LinkedListNode<int> head = linkedList.First;
 
+            Console.WriteLine("\nStarting List elements:");
+            DispalyLinkedList(linkedList);
+
+            //  Iterative reverse
+            LinkedListNode<int> head = linkedList.First;
             while (head.Next != null)
             {
                 var next = head.Next;
                 linkedList.Remove(next);
                 linkedList.AddFirst(next.Value);
             }
-
+            Console.WriteLine("\nIterative reversed:");
             DispalyLinkedList(linkedList);
 
+            //Recursive reverse
+            Console.WriteLine("\nRecursive reversed:");
+            RevRecursive(linkedList.First);
+            DispalyLinkedList(linkedList);
         }
 
-
-     
         static void Ex5()
         {
             int[] listElements = new[] { 11, 2, 3, 3, 12, 46, 11, 3, 9, 11, 12 };
@@ -175,14 +180,36 @@ namespace W1_Homework
             Console.WriteLine($"Last word in string: \n{sentence}\n - is {len} characters long \n");
         }
 
-        //Fct
+        /*
+        * Display Linked List
+        * 
+        */
         public static void DispalyLinkedList(LinkedList<int> lList)
         {
-            Console.WriteLine("\nLinked List elements:");
             foreach (int element in lList)
             {
                 Console.Write(element + " ");
             }
+        }
+
+
+        /*
+         * Reverse Linked List Recursive
+         * 
+         */
+        static LinkedListNode<int> RevRecursive(LinkedListNode<int> current)
+        {
+            if (current == null || current.Next == null)
+            {
+                return current;
+            }
+
+            LinkedListNode<int> newNode = RevRecursive(current.Next);
+
+            newNode.List.AddLast(current.Value);
+            newNode.List.Remove(current);
+
+            return newNode;
         }
     }
 }
