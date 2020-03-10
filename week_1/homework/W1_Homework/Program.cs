@@ -29,6 +29,9 @@ namespace W1_Homework
                         break;
                     case 6:
                         Ex6();
+                        break;    
+                    case 7:
+                        Ex7();
                         break;
                 }
             }
@@ -74,7 +77,7 @@ namespace W1_Homework
             }
 
             Dictionary<int, int> dict = new Dictionary<int, int>();
-
+            
             for (int i = 0; i < unsortedArr.Length; i++)
             {
                 if (dict.ContainsKey(unsortedArr[i]))
@@ -104,6 +107,7 @@ namespace W1_Homework
             string toCountString = Console.ReadLine();
             var charCount = new Dictionary<char, int>();
 
+            //Increment count of key if already in dict, initialize with 1 if not
             foreach (char ch in toCountString)
             {
                 if (charCount.ContainsKey(ch))
@@ -153,6 +157,7 @@ namespace W1_Homework
             int[] listElements = new[] { 11, 2, 3, 3, 12, 46, 11, 3, 9, 11, 12 };
             LinkedList<int> linkedList = new LinkedList<int>(listElements);
             DispalyLinkedList(linkedList);
+            //When a HashSet is created, all duplicates are ignored
             HashSet<int> hashSet = new HashSet<int>(linkedList);
 
             //In case we need a linked list
@@ -166,6 +171,7 @@ namespace W1_Homework
             string sentence = "Given a string s consists of upper or lower case alphabets and empty space characters";
             int len = 0;
 
+            //Count from end untill first space
             for (int i = sentence.Length - 1; i >= 0; i--)
             {
                 if (sentence[i] != ' ')
@@ -178,6 +184,22 @@ namespace W1_Homework
                 }
             }
             Console.WriteLine($"Last word in string: \n{sentence}\n - is {len} characters long \n");
+        }
+
+
+        public static void Ex7()
+        {
+            //2.1
+            int[] newArray = new int[5];
+            //2.2
+            newArray[0] = 5;
+            int fromArray = newArray[0];
+            //2.3
+            Console.WriteLine("Array values\n");
+            foreach(int value in newArray)
+            {
+                Console.WriteLine(value + " ");
+            }
         }
 
         /*
