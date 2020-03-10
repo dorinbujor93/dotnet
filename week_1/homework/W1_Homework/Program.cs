@@ -197,7 +197,7 @@ namespace W1_Homework
             newArray[0] = 5;
             int fromArray = newArray[0];
             //2.3
-            Console.WriteLine("Array values\n");
+            Console.WriteLine("\nArray values\n");
             foreach (int arrayVal in newArray)
             {
                 Console.WriteLine(arrayVal + " ");
@@ -219,7 +219,7 @@ namespace W1_Homework
             //3.4
             newList.RemoveAt(2);
             //3.5
-            Console.WriteLine("List values\n");
+            Console.WriteLine("\nList values\n");
             foreach (string listVal in newList)
             {
                 Console.WriteLine(listVal + " ");
@@ -238,8 +238,8 @@ namespace W1_Homework
             //4.3
             newDictionary.Remove(7);
             //4.4
-            Console.WriteLine("Dictionary values\n");
-            foreach (KeyValuePair<int,int> dictPair in newDictionary)
+            Console.WriteLine("\nDictionary values\n");
+            foreach (KeyValuePair<int, int> dictPair in newDictionary)
             {
                 Console.WriteLine(dictPair.Key + " " + dictPair.Value);
             }
@@ -253,7 +253,7 @@ namespace W1_Homework
             newQueue.Enqueue("Larisa");
             newQueue.Enqueue("Horatiu");
             //5.3
-            Console.WriteLine("Queue values\n");
+            Console.WriteLine("\nQueue values\n");
             while (newQueue.Count > 0)
             {
                 Console.WriteLine(newQueue.Dequeue() + " ");
@@ -268,7 +268,7 @@ namespace W1_Homework
             newStack.Push(0);
             newStack.Push(1);
             //6.3
-            Console.WriteLine("Stack values\n");
+            Console.WriteLine("\nStack values\n");
             while (newStack.Count > 0)
             {
                 Console.WriteLine(newStack.Pop());
@@ -283,7 +283,7 @@ namespace W1_Homework
             names.AddLast("Ion");
             names.AddFirst("Ioana");
             LinkedListNode<string> nameFromList = names.Find("Ioana");
-            
+
             //7.3
             names.RemoveFirst();
             names.RemoveLast();
