@@ -29,7 +29,7 @@ namespace W1_Homework
                         break;
                     case 6:
                         Ex6();
-                        break;    
+                        break;
                     case 7:
                         Ex7();
                         break;
@@ -77,7 +77,7 @@ namespace W1_Homework
             }
 
             Dictionary<int, int> dict = new Dictionary<int, int>();
-            
+
             for (int i = 0; i < unsortedArr.Length; i++)
             {
                 if (dict.ContainsKey(unsortedArr[i]))
@@ -189,6 +189,8 @@ namespace W1_Homework
 
         public static void Ex7()
         {
+            //--- Arrays ---
+
             //2.1
             int[] newArray = new int[5];
             //2.2
@@ -196,10 +198,95 @@ namespace W1_Homework
             int fromArray = newArray[0];
             //2.3
             Console.WriteLine("Array values\n");
-            foreach(int value in newArray)
+            foreach (int arrayVal in newArray)
             {
-                Console.WriteLine(value + " ");
+                Console.WriteLine(arrayVal + " ");
             }
+
+            //--- Lists ---
+
+            //3.1
+            List<string> newList = new List<string>();
+            //3.2
+            newList.Add("Value1");
+            newList.Add("Value2");
+            newList.Add("Value3");
+            newList.Add("Value4");
+            newList.Add("Value5");
+            string fromList = newList[0];
+            //3.3
+            newList.Remove("Value1");
+            //3.4
+            newList.RemoveAt(2);
+            //3.5
+            Console.WriteLine("List values\n");
+            foreach (string listVal in newList)
+            {
+                Console.WriteLine(listVal + " ");
+            }
+
+            //--- Dictionaries ---
+
+            //4.1
+            Dictionary<int, int> newDictionary = new Dictionary<int, int>();
+            //4.2
+            newDictionary.Add(1, 2);
+            newDictionary.Add(3, 4);
+            newDictionary.Add(5, 6);
+            newDictionary.Add(7, 8);
+            int fromDictionary = newDictionary[1];
+            //4.3
+            newDictionary.Remove(7);
+            //4.4
+            Console.WriteLine("Dictionary values\n");
+            foreach (KeyValuePair<int,int> dictPair in newDictionary)
+            {
+                Console.WriteLine(dictPair.Key + " " + dictPair.Value);
+            }
+
+            //--- Queues ---
+
+            //5.1
+            Queue<string> newQueue = new Queue<string>();
+            //5.2
+            newQueue.Enqueue("Ion");
+            newQueue.Enqueue("Larisa");
+            newQueue.Enqueue("Horatiu");
+            //5.3
+            Console.WriteLine("Queue values\n");
+            while (newQueue.Count > 0)
+            {
+                Console.WriteLine(newQueue.Dequeue() + " ");
+            }
+
+            //--- Stacks ---
+
+            //6.1
+            Stack<int> newStack = new Stack<int>();
+            //6.2
+            newStack.Push(3);
+            newStack.Push(0);
+            newStack.Push(1);
+            //6.3
+            Console.WriteLine("Stack values\n");
+            while (newStack.Count > 0)
+            {
+                Console.WriteLine(newStack.Pop());
+            }
+
+
+            //--- Linked Lists ---
+
+            //7.1
+            LinkedList<string> names = new LinkedList<string>();
+            //7.2
+            names.AddLast("Ion");
+            names.AddFirst("Ioana");
+            LinkedListNode<string> nameFromList = names.Find("Ioana");
+            
+            //7.3
+            names.RemoveFirst();
+            names.RemoveLast();
         }
 
         /*
