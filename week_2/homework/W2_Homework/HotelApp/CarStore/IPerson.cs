@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CarStore
+﻿namespace CarStore
 {
-    class IPerson
+    public interface IPerson
     {
+        void DisplayOwnedVehicles();
+        void PassTime(int weeks);
+
     }
 }

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace CarStore
 {
-    class IProducer
+    public interface IProducer
     {
+        void ProduceAVehicle(string model, string collor);
+        void Display();
     }
 }

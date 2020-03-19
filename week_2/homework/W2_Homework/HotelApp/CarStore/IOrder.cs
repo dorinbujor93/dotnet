@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CarStore
+﻿namespace CarStore
 {
-    class IOrder
+    public interface IOrder
     {
+        int GenerateIdentifier();
     }
 }
