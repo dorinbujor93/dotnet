@@ -2,6 +2,7 @@
 {
     public interface IOrder
     {
-        int GenerateIdentifier();
+        void Display();
+        void FillOrderData(Store store, Person customer, Vehicle car);
     }
 }

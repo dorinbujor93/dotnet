@@ -8,8 +8,8 @@ namespace CarStore
     {
         void ShowStoreInformation();
         void ShowAvailableVehicles();
-        void DeliverCarToCustomer(Person person, Vehicle vehicle);
-        void PlaceOrder(string model, int price, Person customer);
-        void CancelOrder(Person person, string model)
+        void DeliverCarToCustomer(Person person);
+        bool PlaceOrder(string model, int price, Person customer);
+        bool CancelOrder(Person person, string model);
     }
 }

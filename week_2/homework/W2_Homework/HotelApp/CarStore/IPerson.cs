@@ -3,7 +3,6 @@
     public interface IPerson
     {
         void DisplayOwnedVehicles();
-        void PassTime(int weeks);
-
+        void BuyACar(Store store, string model, int ammount);
     }
 }

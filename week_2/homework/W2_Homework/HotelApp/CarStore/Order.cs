@@ -20,12 +20,8 @@ namespace CarStore
         public Vehicle Vehicle { get => vehicle; set => vehicle = value; }
         public Store Store { get => store; set => store = value; }
 
-        public int GenerateIdentifier()
-        {
-            Random random = new Random();
-            return random.Next(10000, 999999999);
-        }
-
+    
+        //Display order information
         public void Display()
         {
             Console.WriteLine($"\n-----------------ORDER---------------------");
@@ -39,6 +35,7 @@ namespace CarStore
             Console.WriteLine($"\n-----------------ORDER---------------------");
         }
 
+        //Fill order information
         public void FillOrderData(Store store,Person customer, Vehicle car)
         {
             this.store = store;
@@ -47,6 +44,13 @@ namespace CarStore
             vehicle = car;
             customerName = customer.Name;
             id = GenerateIdentifier();
+        }
+
+        //Generate an identifier for the order
+        private int GenerateIdentifier()
+        {
+            Random random = new Random();
+            return random.Next(10000, 999999999);
         }
     }
 }

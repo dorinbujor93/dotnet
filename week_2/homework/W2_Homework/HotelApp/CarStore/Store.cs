@@ -19,7 +19,7 @@ namespace CarStore
         public List<Order> Orders { get => orders; set => orders = value; }
 
         //Order a car
-        public void PlaceOrder(string model, int price, Person customer)
+        public bool PlaceOrder(string model, int price, Person customer)
         {
             if (customer.Networth > price)
             {
@@ -33,8 +33,9 @@ namespace CarStore
                         Orders.Add(order);
                         order.Display();
                         customer.Networth -= car.Price;
+                        customer.TimeToWait = affiliateProducer.WeeksForDelivery;
                         Console.WriteLine("*** Congruatulations you have ordered a beautifull car! ***");
-                        break;
+                        return true;
                     }
                 }
             }
@@ -42,31 +43,41 @@ namespace CarStore
             {
                 Console.WriteLine("You do not have enough money!");
             }
-    
+            return false;
         }
 
         //Cancell existing order
-        public void CancelOrder(Person person, string model)
+        public bool CancelOrder(Person person, string model)
         {
-            foreach(Order order in orders)
+            foreach (Order order in orders)
             {
-                if(order.Vehicle.Model == model && order.Status != "Cancelled")
+                if (order.Vehicle.Model == model && order.Status != "Cancelled")
                 {
                     order.Status = "Cancelled";
                     person.Networth += order.Vehicle.Price;
                     Console.WriteLine("Your Order Has Been Cancelled!");
+                    return true;
                 }
-                break;
             }
+            return false;
         }
 
         //Deliver car to the happy customer
-        public void DeliverCarToCustomer(Person person, Vehicle vehicle)
+        public void DeliverCarToCustomer(Person person)
         {
-            availableVehicles.Remove(vehicle);
-            person.Vehicles.Add(vehicle);
+            foreach (Order order in orders)
+            {
+                if (order.CustomerName == person.Name)
+                {
+                    Vehicle car = order.Vehicle;
+                    availableVehicles.Remove(car);
+                    person.Vehicles.Add(car);
+                    Console.WriteLine("Your Order Has Been Delivered!");
+                    break;
+                }
+            }
         }
-    
+
         //Display some information about our store and it's partners
         public void ShowStoreInformation()
         {

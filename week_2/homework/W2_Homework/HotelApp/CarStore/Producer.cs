@@ -23,6 +23,7 @@ namespace CarStore
         public List<Vehicle> AvailableVehicles { get => availableVehicles; set => availableVehicles = value; }
         public Dictionary<string, Dictionary<string, int>> VehicleSpecs { get => vehicleSpecs; set => vehicleSpecs = value; }
 
+        //Will produce a new vehicle of given model and collor using model specifications
         public void ProduceAVehicle(string model, string collor)
         {
             if (vehicleSpecs.ContainsKey(model))
@@ -46,6 +47,7 @@ namespace CarStore
 
         }
 
+        //Display producer information
         public void Display()
         {
             Console.WriteLine($"\nProducer info:");

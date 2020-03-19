@@ -7,13 +7,6 @@ namespace CarStore
     {
         static void Main(string[] args)
         {
-            //Alex intended to buy a Ford Focus 2015 model.
-            //He walked to the FordStore in Bucuresti and agreed to buy one for *15000Euro.
-            //They informed him it will take 4 weeks for delivery.
-            //He then decided to visit another store SkodaStore and agreed to buy one * for 14000Euro and 3 weeks delivery.
-            //He then canceled his original order from the FordStore.
-            //After 3 weeks, he received the model.
-
             // Create Ford producer
             Producer producerFord = new Producer();
             producerFord.Country = "USA";
@@ -63,7 +56,7 @@ namespace CarStore
                 "Fabia", new Dictionary<string,int>() {
                     { "horsePower", 100 },
                     { "maxSpeed", 220 },
-                    { "price", 15000}
+                    { "price", 14000}
                 }
             }
             };
@@ -98,8 +91,12 @@ namespace CarStore
 
             //Show Alex details 
             alex.DisplayOwnedVehicles();
-            alex.BuyACar(fordStore, "Focus");
-            alex.BuyACar(skodaStore, "Fabia");
+            //Go to Ford store to buy a Focus
+            alex.BuyACar(fordStore, "Focus", 15000);
+            alex.DisplayOwnedVehicles();
+            //Go to Skoda store to buy a Fabia
+            alex.BuyACar(skodaStore, "Fabia", 14000);
+            alex.DisplayOwnedVehicles();
 
 
         }

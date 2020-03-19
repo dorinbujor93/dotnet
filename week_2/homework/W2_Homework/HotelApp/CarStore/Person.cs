@@ -9,15 +9,17 @@ namespace CarStore
         private string name;
         private int age;
         private decimal netWorth;
+        private int timeToWait;
         private List<Vehicle> vehicles = new List<Vehicle>();
 
 
         public string Name { get => name; set => name = value; }
         public int Age { get => age; set => age = value; }
+        public int TimeToWait { get => timeToWait; set => timeToWait = value; }
         public decimal Networth { get => netWorth; set => netWorth = value; }
         public List<Vehicle> Vehicles { get => vehicles; set => vehicles = value; }
 
-
+        //Display all vehicles owned by person
         public void DisplayOwnedVehicles()
         {
             if (Vehicles.Count > 0)
@@ -34,21 +36,47 @@ namespace CarStore
             }
         }
 
-        public void BuyACar(Store store, string model)
+        //Buy a car with given specs
+        public void BuyACar(Store store, string model, int ammount)
         {
-           store.ShowStoreInformation();
-           store.ShowAvailableVehicles();
-           store.PlaceOrder(model, 15000, this);
-           store.CancelOrder(this, model);
+            store.ShowStoreInformation();
+            store.ShowAvailableVehicles();
+
+            //Try to place an order in the store
+            if (store.PlaceOrder(model, ammount, this))
+            {
+                if (timeToWait > 3)
+                {
+                    //Cancell order since it takes too long to deliver
+                    CancelCarOrder(store, model);
+                }
+                else
+                {
+                    //Wait for the car to be delivered
+                    PassTime(timeToWait);
+                    store.DeliverCarToCustomer(this);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Something went wrong!");
+            }
         }
 
-        public void CancelCarOrder(Store store, string model)
+        //Go to store and cancell a order for the car
+        private void CancelCarOrder(Store store, string model)
         {
             store.CancelOrder(this, model);
         }
-        public void PassTime(int weeks)
-        {
 
+        //Wait for x weeks
+        private void PassTime(int weeks)
+        {
+            while (weeks > 0)
+            {
+                weeks--;
+                Console.WriteLine("A week have passed!");
+            }
         }
     }
 }

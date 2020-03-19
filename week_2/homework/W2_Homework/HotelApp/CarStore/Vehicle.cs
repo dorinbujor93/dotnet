@@ -24,6 +24,7 @@ namespace CarStore
         public decimal Price { get => price; set => price = value; }
         public string ProducerName { get => producerName; set => producerName = value; }
 
+        //Will display vehicle information
         public void Display()
         {
             Console.WriteLine($"\nVehicle model: {model}");
