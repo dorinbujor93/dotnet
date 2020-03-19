@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static CarStore.Logging.LogHelper;
 
 namespace CarStore
 {
@@ -27,13 +28,13 @@ namespace CarStore
         //Will display vehicle information
         public void Display()
         {
-            Console.WriteLine($"\nVehicle model: {model}");
-            Console.WriteLine($"Produced in: {year}");
-            Console.WriteLine($"Collor: {collor}");
-            Console.WriteLine($"Serial Number: {serialNumber}");
-            Console.WriteLine($"With {horsePower} horse powers");
-            Console.WriteLine($"Can reach a maximum of {maxSpeed} km/h");
-            Console.WriteLine($"Costs: {price}");
+            Log(LogTarget.File, $"\nVehicle model: {model}");
+            Log(LogTarget.File, $"Produced in: {year}");
+            Log(LogTarget.File, $"Collor: {collor}");
+            Log(LogTarget.File, $"Serial Number: {serialNumber}");
+            Log(LogTarget.File, $"With {horsePower} horse powers");
+            Log(LogTarget.File, $"Can reach a maximum of {maxSpeed} km/h");
+            Log(LogTarget.File, $"Costs: {price}");
         }
 
     }

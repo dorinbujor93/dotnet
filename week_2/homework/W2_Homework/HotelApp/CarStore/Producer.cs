@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static CarStore.Logging.LogHelper;
 
 namespace CarStore
 {
@@ -50,11 +51,11 @@ namespace CarStore
         //Display producer information
         public void Display()
         {
-            Console.WriteLine($"\nProducer info:");
-            Console.WriteLine($"Name: {name}");
-            Console.WriteLine($"Country: {country}");
-            Console.WriteLine($"Founded: {founded}");
-            Console.WriteLine($"Stock value: {stockValue}");
+            Log(LogTarget.File, $"\nProducer info:");
+            Log(LogTarget.File, $"Name: {name}");
+            Log(LogTarget.File, $"Country: {country}");
+            Log(LogTarget.File, $"Founded: {founded}");
+            Log(LogTarget.File, $"Stock value: {stockValue}");
         }
 
         //Will generate a serial number for produced car

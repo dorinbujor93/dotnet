@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static CarStore.Logging.LogHelper;
 
 namespace CarStore
 {
@@ -24,7 +25,7 @@ namespace CarStore
         {
             if (Vehicles.Count > 0)
             {
-                Console.WriteLine($"Vehicles owned by {name}:");
+                Log(LogTarget.File, $"Vehicles owned by {name}:");
                 foreach (Vehicle vehicle in Vehicles)
                 {
                     vehicle.Display();
@@ -32,7 +33,7 @@ namespace CarStore
             }
             else
             {
-                Console.WriteLine($"{name} has no vehicles.");
+                Log(LogTarget.File, $"{name} has no vehicles.");
             }
         }
 
@@ -59,7 +60,7 @@ namespace CarStore
             }
             else
             {
-                Console.WriteLine("Something went wrong!");
+                Log(LogTarget.File, "Something went wrong!");
             }
         }
 
@@ -75,7 +76,7 @@ namespace CarStore
             while (weeks > 0)
             {
                 weeks--;
-                Console.WriteLine("A week have passed!");
+                Log(LogTarget.File, "A week have passed!");
             }
         }
     }

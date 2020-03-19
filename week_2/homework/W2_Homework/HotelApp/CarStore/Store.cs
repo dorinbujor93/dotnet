@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static CarStore.Logging.LogHelper;
 
 namespace CarStore
 {
@@ -34,14 +35,14 @@ namespace CarStore
                         order.Display();
                         customer.Networth -= car.Price;
                         customer.TimeToWait = affiliateProducer.WeeksForDelivery;
-                        Console.WriteLine("*** Congruatulations you have ordered a beautifull car! ***");
+                        Log(LogTarget.File, "*** Congruatulations you have ordered a beautifull car! ***");
                         return true;
                     }
                 }
             }
             else
             {
-                Console.WriteLine("You do not have enough money!");
+                Log(LogTarget.File, "You do not have enough money!");
             }
             return false;
         }
@@ -55,7 +56,7 @@ namespace CarStore
                 {
                     order.Status = "Cancelled";
                     person.Networth += order.Vehicle.Price;
-                    Console.WriteLine("Your Order Has Been Cancelled!");
+                    Log(LogTarget.File, "Your Order Has Been Cancelled!");
                     return true;
                 }
             }
@@ -72,7 +73,7 @@ namespace CarStore
                     Vehicle car = order.Vehicle;
                     availableVehicles.Remove(car);
                     person.Vehicles.Add(car);
-                    Console.WriteLine("Your Order Has Been Delivered!");
+                    Log(LogTarget.File, "Your Order Has Been Delivered!");
                     break;
                 }
             }
@@ -81,26 +82,26 @@ namespace CarStore
         //Display some information about our store and it's partners
         public void ShowStoreInformation()
         {
-            Console.WriteLine($"Hi, we are glad to meet you at {name}");
-            Console.WriteLine($"Here you can buy vehicles  produced by {affiliateProducer.Name}");
+            Log(LogTarget.File, $"Hi, we are glad to meet you at {name}");
+            Log(LogTarget.File, $"Here you can buy vehicles  produced by {affiliateProducer.Name}");
             //Display some info about producer that store is working with
             affiliateProducer.Display();
-            Console.WriteLine("------------------");
+            Log(LogTarget.File, "------------------");
         }
 
         //Will display details of vehicles from producers warehouse and available nr
         public void ShowAvailableVehicles()
         {
             //Display available vehicles
-            Console.WriteLine($"Available vehicles that can be bought from {name}:");
+            Log(LogTarget.File, $"Available vehicles that can be bought from {name}:");
             foreach (Vehicle car in availableVehicles)
             {
                 car.Display();
             }
-            Console.WriteLine("------------------");
-            Console.WriteLine($"*** Please note that vehicles are in producer's warehouse, it will take {affiliateProducer.WeeksForDelivery} weeks to deliver them ***");
-            Console.WriteLine("------------------");
-            Console.WriteLine($"Some info about {affiliateProducer.Name}:");
+            Log(LogTarget.File, "------------------");
+            Log(LogTarget.File, $"*** Please note that vehicles are in producer's warehouse, it will take {affiliateProducer.WeeksForDelivery} weeks to deliver them ***");
+            Log(LogTarget.File, "------------------");
+            Log(LogTarget.File, $"Some info about {affiliateProducer.Name}:");
             affiliateProducer.Display();
         }
 

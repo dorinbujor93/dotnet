@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static CarStore.Logging.LogHelper;
 
 namespace CarStore
 {
@@ -24,15 +25,15 @@ namespace CarStore
         //Display order information
         public void Display()
         {
-            Console.WriteLine($"\n-----------------ORDER---------------------");
-            Console.WriteLine($"\n*** Order information: ***");
-            Console.WriteLine($"Order ID: {id}");
-            Console.WriteLine($"Status: {status}");
-            Console.WriteLine($"Weeks till delivery: {weeksToDeliver}");
-            Console.WriteLine($"Customer Name: {customerName}");
-            Console.WriteLine($"Product bought:{vehicle.Model}");
+            Log(LogTarget.File, $"\n-----------------ORDER---------------------");
+            Log(LogTarget.File, $"\n*** Order information: ***");
+            Log(LogTarget.File, $"Order ID: {id}");
+            Log(LogTarget.File, $"Status: {status}");
+            Log(LogTarget.File, $"Weeks till delivery: {weeksToDeliver}");
+            Log(LogTarget.File, $"Customer Name: {customerName}");
+            Log(LogTarget.File, $"Product bought:{vehicle.Model}");
             vehicle.Display();
-            Console.WriteLine($"\n-----------------ORDER---------------------");
+            Log(LogTarget.File, $"\n-----------------ORDER---------------------");
         }
 
         //Fill order information
