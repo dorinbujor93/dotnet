@@ -10,10 +10,8 @@ namespace ConsoleApp2
             var evernt = new MyEvent();
             evernt.MyEv += new OnMyEventHandler(Callback);
 
-
             while (true)
             {
-
                 evernt.OnMyEvent();
                 Thread.Sleep(2000);
             }
