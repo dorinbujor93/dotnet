@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Homework;
+using System;
 using System.Collections.Generic;
 
 namespace ConsoleApp1
@@ -7,7 +8,12 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            List<int> x = new List<int>();
+            MyList<int> list = new MyList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+
+            
         }
     }
 }
