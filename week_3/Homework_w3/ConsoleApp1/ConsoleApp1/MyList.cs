@@ -7,9 +7,9 @@ namespace Homework3
 {
     public class MyList<T> : IList<T>
     {
-        private int _size;
+        private int _len;
         private T[] _container;
-
+        static T[] _emptyArray = new T[2];
         public T this[int index]
         {
             get
@@ -21,9 +21,6 @@ namespace Homework3
                 _container[index] = value;
             }
         }
-
-        static T[] _emptyArray = new T[2];
-
         public int Capacity
         {
             get { return _container.Length; }
@@ -32,9 +29,9 @@ namespace Homework3
                 if (value > 0)
                 {
                     T[] newItems = new T[value];
-                    if (_size > 0)
+                    if (_len > 0)
                     {
-                        Array.Copy(_container, 0, newItems, 0, _size);
+                        Array.Copy(_container, 0, newItems, 0, _len);
                     }
                 }
                 else
@@ -63,30 +60,30 @@ namespace Homework3
             if (capacity == 0)
             {
                 _container = _emptyArray;
-                _size = 0;
+                _len = 0;
             }
             else if (capacity > 0)
             {
                 _container = new T[capacity];
-                _size = capacity;
+                _len = capacity;
             }
         }
 
     
         public int Count
         {
-            get { return _size; }
+            get { return _len; }
         }
 
         public bool IsReadOnly => throw new NotImplementedException();
 
         public void Add(T item)
         {
-            if (_size == _container.Length)
+            if (_len == _container.Length)
             {
-                RiseCapacity(_size + 1);
+                RiseCapacity(_len + 1);
             }
-            _container[_size++] = item;
+            _container[_len++] = item;
         }
 
      
@@ -105,10 +102,10 @@ namespace Homework3
       
         public void RemoveAt(int index)
         {
-            if (index < _size)
+            if (index < _len)
             {
                 var sourceIndex = index + 1;
-                Array.Copy(_container, sourceIndex, _container, index, _size - index);
+                Array.Copy(_container, sourceIndex, _container, index, _len - index);
             }
         }
 
