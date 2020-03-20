@@ -111,9 +111,9 @@ namespace Homework3
 
         public IEnumerator<T> GetEnumerator()
         {
-            for (int i = 0; i < _container.Length; i++)
+            foreach (T item in  this._container)
             {
-                yield return this._container[i];
+                yield return item;
             }
         }
 
