@@ -12,8 +12,18 @@ namespace ConsoleApp1
             list.Add(1);
             list.Add(2);
             list.Add(3);
+            list.Add(3);
+            list.Add(3);
+         //   list.Add(3);
+            //list[0] = 15;
 
-            
+            //list.Remove(5);
+
+            //foreach (int x in list)
+            //{
+            //    Console.WriteLine(x);
+            //}
+
         }
     }
 }
