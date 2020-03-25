@@ -9,7 +9,6 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
-
             List<int> L = new List<int>() { 1, 2, 3, 4, 5, 11, 12, 13, 14, 15 };
             DisplayList(L);
 
