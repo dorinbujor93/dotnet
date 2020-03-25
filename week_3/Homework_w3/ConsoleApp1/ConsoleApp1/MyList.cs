@@ -10,6 +10,7 @@ namespace Homework
         private int _len;
         private T[] _container;
         static T[] _emptyArray = new T[2];
+
         public T this[int index]
         {
             get
@@ -66,6 +67,10 @@ namespace Homework
             {
                 _container = new T[capacity];
                 _len = capacity;
+            }
+            else
+            {
+                throw new ArgumentException("List capacity must be greater than 0!");
             }
         }
 

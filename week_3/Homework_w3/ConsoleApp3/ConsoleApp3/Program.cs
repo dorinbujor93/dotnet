@@ -11,23 +11,15 @@ namespace ConsoleApp3
         {
 
             List<int> L = new List<int>() { 1, 2, 3, 4, 5, 11, 12, 13, 14, 15 };
-
-            dynamic sum = L.Sum();
-
-            dynamic average = L.Average();
-            dynamic product = L.Product();
-            dynamic min = L.Min();
-            dynamic max = L.Max();
             DisplayList(L);
 
 
             Console.WriteLine();
-            Console.WriteLine(sum);
-            Console.WriteLine(average);
-            Console.WriteLine(product);
-            Console.WriteLine(min);
-            Console.WriteLine(max);
-
+            Console.WriteLine(L.Sum());
+            Console.WriteLine(L.Average());
+            Console.WriteLine(L.Product());
+            Console.WriteLine(L.Max());
+                
         }
         static void DisplayList(List<int> list)
         {
