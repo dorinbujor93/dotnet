@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -33,20 +32,10 @@ namespace Ex2
 
         public string ToString(string? format, IFormatProvider? formatProvider)
         {
-            if (String.IsNullOrEmpty(format)) format = "DDD";
-            if (formatProvider == null) formatProvider = CultureInfo.CurrentCulture;
+            var thisTime = new DateTime(Year, Month, Day);
 
-            switch (format.ToUpperInvariant())
-            {
-                case "D":
-                    return Day.ToString();
-                case "DD":
-                    return Day + " " + Month;
-                case "DDD":
-                    return Day + " " + Month + " " + Year;
-                default:
-                    throw new FormatException($"The {format} format string is not supported.");
-            }
+            return thisTime.ToString(formatProvider);
+           
         }
 
         public bool Equals(BusinessDate other)
