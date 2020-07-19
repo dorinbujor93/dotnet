@@ -14,6 +14,7 @@ This project allows a customer to buy a bike from our store.
 *  Dependency injection
 
 ## Implemented Concepts
+* Database seeding
 * Extension methods
 * Enums
 * Global exception handler
@@ -21,6 +22,7 @@ This project allows a customer to buy a bike from our store.
 * Logger
 * Models
 * Validation
+* C# - Reflection
 
 # Note:
   Project is still in progress
