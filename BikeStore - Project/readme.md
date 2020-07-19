@@ -13,10 +13,14 @@ This project allows a customer to buy a bike from our store.
 *  Request-Response
 *  Dependency injection
 
-## Concepts
+## Implemented Concepts
 * Extension methods
 * Enums
-
+* Global exception handler
+* Middlewares 
+* Logger
+* Models
+* Validation
 
 # Note:
   Project is still in progress
