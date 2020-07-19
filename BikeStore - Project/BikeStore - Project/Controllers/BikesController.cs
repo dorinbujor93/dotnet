@@ -5,7 +5,6 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using AutoMapper;
 using BikeStore___Project.Data;
-using BikeStore___Project.Data.Entities;
 using BikeStore___Project.Data.Persistence;
 using BikeStore___Project.Domain.Models;
 using BikeStore___Project.Domain.Services;

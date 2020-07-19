@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using BikeStore___Project.Domain.Models;
 
-namespace BikeStore___Project.Domain.Services
+namespace BikeStore___Project.Domain.Repositories
 {
-    public interface IBikeService
+    public interface IAccessoryRepository
     {
-        Task<IEnumerable<Bike>> ListAsync();
+        Task<IEnumerable<Accessory>> ListAsync();
+
     }
 }

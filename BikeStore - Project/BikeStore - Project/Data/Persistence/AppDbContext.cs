@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using BikeStore___Project.Data.Entities;
 using BikeStore___Project.Domain.Enums;
 using BikeStore___Project.Domain.Models;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +26,34 @@ namespace BikeStore___Project.Data.Persistence
                 new Category {Id = 3, Name = "Touring Bike"}
             );
 
+            builder.Entity<Accessory>().HasData
+            (
+                new Accessory()
+                {
+                    Id = 1,
+                    Brand = "Shimano",
+                    Name = "Altus",
+                    Weight = 100,
+                    AccessoryType = EAccessoryType.Cyclocomputer
+                },
+                new Accessory()
+                {
+                    Id = 2,
+                    Brand = "Kring",
+                    Name = "Lighting",
+                    Weight = 10,
+                    AccessoryType = EAccessoryType.FrontLight
+                },
+                new Accessory()
+                {
+                    Id = 3,
+                    Brand = "Smith",
+                    Name = "Ringer",
+                    Weight = 15,
+                    BikeId = 2,
+                    AccessoryType = EAccessoryType.Bell
+                }
+            );
 
             builder.Entity<Bike>().HasData
             (

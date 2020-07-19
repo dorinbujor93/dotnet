@@ -8,15 +8,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BikeStore___Project.Data.Persistence.Repositories
 {
-    public class BikeRepository : BaseRepository, IBikeRepository
+    public class AccessoryRepository : BaseRepository, IAccessoryRepository
     {
-        public BikeRepository(AppDbContext context) : base(context)
+        public AccessoryRepository(AppDbContext context) : base(context)
         {
         }
 
-        public async Task<IEnumerable<Bike>> ListAsync()
+        public async Task<IEnumerable<Accessory>> ListAsync()
         {
-            return await _context.Bikes.Include(p => p.Category)
+            return await _context.Accessories.Include(p => p.Bike)
                 .ToListAsync();
         }
     }

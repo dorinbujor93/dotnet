@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using BikeStore___Project.Data.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+using BikeStore___Project.Domain.Enums;
+using BikeStore___Project.Domain.Models;
 
-namespace SaddleStore___Project.Resources
+namespace BikeStore___Project.Resources
 {
     public class AccessoryResource
     {
@@ -16,6 +13,8 @@ namespace SaddleStore___Project.Resources
         public string Brand { get; set; }
         public string Name { get; set; }
         public int Weight { get; set; }
+        public BikeResource Bike { get; set; }
+        public EAccessoryType AccessoryType { get; set; }
 
     }
 }

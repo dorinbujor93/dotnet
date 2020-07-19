@@ -19,14 +19,17 @@ namespace BikeStore___Project.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("BikeStore___Project.Data.Entities.Accessory", b =>
+            modelBuilder.Entity("BikeStore___Project.Domain.Models.Accessory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BikeId")
+                    b.Property<byte>("AccessoryType")
+                        .HasColumnType("tinyint");
+
+                    b.Property<int>("BikeId")
                         .HasColumnType("int");
 
                     b.Property<string>("Brand")
@@ -50,6 +53,35 @@ namespace BikeStore___Project.Migrations
                     b.HasIndex("BikeId");
 
                     b.ToTable("Accessories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccessoryType = (byte)6,
+                            BikeId = 1,
+                            Brand = "Shimano",
+                            Name = "Altus",
+                            Weight = 100
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AccessoryType = (byte)2,
+                            BikeId = 2,
+                            Brand = "Kring",
+                            Name = "Lighting",
+                            Weight = 10
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AccessoryType = (byte)1,
+                            BikeId = 2,
+                            Brand = "Smith",
+                            Name = "Ringer",
+                            Weight = 15
+                        });
                 });
 
             modelBuilder.Entity("BikeStore___Project.Domain.Models.Bike", b =>
@@ -136,11 +168,13 @@ namespace BikeStore___Project.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BikeStore___Project.Data.Entities.Accessory", b =>
+            modelBuilder.Entity("BikeStore___Project.Domain.Models.Accessory", b =>
                 {
                     b.HasOne("BikeStore___Project.Domain.Models.Bike", "Bike")
-                        .WithMany()
-                        .HasForeignKey("BikeId");
+                        .WithMany("Accessories")
+                        .HasForeignKey("BikeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("BikeStore___Project.Domain.Models.Bike", b =>

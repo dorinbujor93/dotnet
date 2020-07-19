@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BikeStore___Project.Data.Entities;
 
 namespace BikeStore___Project.Domain.Models
 {

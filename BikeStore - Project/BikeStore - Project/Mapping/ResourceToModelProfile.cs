@@ -21,6 +21,9 @@ namespace BikeStore___Project.Mapping
             CreateMap<Bike, BikeResource>()
                 .ForMember(src => src.FrameSize,
                     opt => opt.MapFrom(src => (EFrameSize) src.FrameSize));
+            CreateMap<Accessory, AccessoryResource>()
+                .ForMember(src => src.AccessoryType,
+                    opt => opt.MapFrom(src => (EAccessoryType) src.AccessoryType));
         }
     }
 }

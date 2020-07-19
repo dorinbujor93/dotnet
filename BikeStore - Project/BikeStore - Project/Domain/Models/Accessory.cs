@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using BikeStore___Project.Domain.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using BikeStore___Project.Domain.Enums;
 
-namespace BikeStore___Project.Data.Entities
+namespace BikeStore___Project.Domain.Models
 {
     public class Accessory
     {
@@ -17,6 +13,9 @@ namespace BikeStore___Project.Data.Entities
         public string Name { get; set; }
         public int Weight { get; set; }
         public Bike Bike { get; set; }
+        public int BikeId { get; set; }
+
+        public EAccessoryType AccessoryType { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }

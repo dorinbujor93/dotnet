@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BikeStore___Project.Migrations
 {
-    public partial class Seed1 : Migration
+    public partial class Seed0 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,7 +51,8 @@ namespace BikeStore___Project.Migrations
                     Brand = table.Column<string>(maxLength: 100, nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Weight = table.Column<int>(nullable: false),
-                    BikeId = table.Column<int>(nullable: true),
+                    BikeId = table.Column<int>(nullable: false),
+                    AccessoryType = table.Column<byte>(nullable: false),
                     RowVersion = table.Column<byte[]>(rowVersion: true, nullable: true)
                 },
                 constraints: table =>
@@ -62,7 +63,7 @@ namespace BikeStore___Project.Migrations
                         column: x => x.BikeId,
                         principalTable: "Bikes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -94,6 +95,21 @@ namespace BikeStore___Project.Migrations
                 table: "Bikes",
                 columns: new[] { "Id", "CategoryId", "Color", "FrameSize", "FrameType" },
                 values: new object[] { 3, 3, "Gray", (byte)3, (byte)2 });
+
+            migrationBuilder.InsertData(
+                table: "Accessories",
+                columns: new[] { "Id", "AccessoryType", "BikeId", "Brand", "Name", "Weight" },
+                values: new object[] { 1, (byte)6, 1, "Shimano", "Altus", 100 });
+
+            migrationBuilder.InsertData(
+                table: "Accessories",
+                columns: new[] { "Id", "AccessoryType", "BikeId", "Brand", "Name", "Weight" },
+                values: new object[] { 2, (byte)2, 2, "Kring", "Lighting", 10 });
+
+            migrationBuilder.InsertData(
+                table: "Accessories",
+                columns: new[] { "Id", "AccessoryType", "BikeId", "Brand", "Name", "Weight" },
+                values: new object[] { 3, (byte)1, 2, "Smith", "Ringer", 15 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Accessories_BikeId",
