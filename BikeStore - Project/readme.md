@@ -1,4 +1,4 @@
-## Bike Store RESTful APIs with ASP.NET Core
+## Bike Store RESTful API with ASP.NET Core
 
 This project allows a customer to buy a bike from our store.
 
