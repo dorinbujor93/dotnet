@@ -16,5 +16,8 @@ namespace BikeStore___Project.Data.Entities
         public string Name { get; set; }
         public int Weight { get; set; }
         public Bike Bike { get; set; }
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
     }
 }

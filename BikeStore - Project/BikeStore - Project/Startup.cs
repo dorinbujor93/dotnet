@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using BikeStore___Project.Data;
 using System.Threading.Tasks;
+using AutoMapper;
+using BikeStore___Project.Data.Persistence;
+using BikeStore___Project.Data.Persistence.Repositories;
+using BikeStore___Project.Domain.Repositories;
+using BikeStore___Project.Domain.Services;
 using BikeStore___Project.Middleware;
+using BikeStore___Project.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -29,13 +35,19 @@ namespace BikeStore___Project
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApiDbContext>(options =>
+            services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Bike store API", Version = "v1"});
             });
+
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
         }
 

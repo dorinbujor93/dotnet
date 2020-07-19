@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using BikeStore___Project.Data;
 using BikeStore___Project.Data.Entities;
+using BikeStore___Project.Data.Persistence;
 using BikeStore___Project.Resources;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,9 +17,9 @@ namespace BikeStore___Project.Controllers
     [ApiController]
     public class BikeController : ControllerBase
     {
-        private readonly ApiDbContext context;
+        private readonly AppDbContext context;
 
-        public BikeController(ApiDbContext context)
+        public BikeController(AppDbContext context)
         {
             this.context = context;
         }
@@ -55,6 +57,17 @@ namespace BikeStore___Project.Controllers
 
             var entity = await context.Bikes.FindAsync(id);
 
+            // var eTag = MD5.Create().ComputeHash("test").ToString();
+            // HttpContext.Response.Headers.Add("ETAG_HEADER", eTag);
+            //
+            //
+            // if (HttpContext.Request.Headers.Keys.Contains("If-None-Match") && HttpContext.Request.Headers["If-None-Match"].ToString() == eTag)
+            // {
+            //     return new StatusCodeResult(304);
+            // }
+            //
+            // HttpContext.Response.Headers.Add("ETag", new[] { eTag });
+
             entity.Color = bike.Color;
             entity.Type = bike.Type;
 
@@ -70,7 +83,7 @@ namespace BikeStore___Project.Controllers
                 throw;
             }
 
-            return NoContent();
+            return new StatusCodeResult(200);
         }
 
         // POST: api/Bike

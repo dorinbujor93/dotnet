@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BikeStore___Project.Data;
 using BikeStore___Project.Data.Entities;
+using BikeStore___Project.Data.Persistence;
 using BikeStore___Project.Resources;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,9 +17,9 @@ namespace BikeStore___Project.Controllers
     [ApiController]
     public class AccessoryController : ControllerBase
     {
-        private readonly ApiDbContext context;
+        private readonly AppDbContext context;
 
-        public AccessoryController(ApiDbContext context)
+        public AccessoryController(AppDbContext context)
         {
             this.context = context;
         }
