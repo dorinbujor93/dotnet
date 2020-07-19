@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BikeStore___Project.Migrations
 {
-    public partial class migration : Migration
+    public partial class Seed1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,12 +26,10 @@ namespace BikeStore___Project.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Type = table.Column<string>(maxLength: 100, nullable: false),
                     Color = table.Column<string>(nullable: true),
                     FrameType = table.Column<byte>(nullable: false),
                     FrameSize = table.Column<byte>(nullable: false),
-                    CategoryId = table.Column<int>(nullable: false),
-                    RowVersion = table.Column<byte[]>(rowVersion: true, nullable: true)
+                    CategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -66,6 +64,36 @@ namespace BikeStore___Project.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 1, "Road Bike" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 2, "Mountain Bike" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 3, "Touring Bike" });
+
+            migrationBuilder.InsertData(
+                table: "Bikes",
+                columns: new[] { "Id", "CategoryId", "Color", "FrameSize", "FrameType" },
+                values: new object[] { 1, 1, "Red", (byte)3, (byte)1 });
+
+            migrationBuilder.InsertData(
+                table: "Bikes",
+                columns: new[] { "Id", "CategoryId", "Color", "FrameSize", "FrameType" },
+                values: new object[] { 2, 2, "Yellow", (byte)3, (byte)4 });
+
+            migrationBuilder.InsertData(
+                table: "Bikes",
+                columns: new[] { "Id", "CategoryId", "Color", "FrameSize", "FrameType" },
+                values: new object[] { 3, 3, "Gray", (byte)3, (byte)2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Accessories_BikeId",

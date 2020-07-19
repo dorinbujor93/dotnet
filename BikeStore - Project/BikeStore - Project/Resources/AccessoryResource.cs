@@ -18,30 +18,4 @@ namespace SaddleStore___Project.Resources
         public int Weight { get; set; }
 
     }
-
-    public static class SaddleResourceExtensions
-    {
-        public static Accessory MapToEntity(this AccessoryResource accessory)
-        {
-            return new Accessory
-            {
-                Brand = accessory.Brand,
-                Name = accessory.Name,
-                Weight = accessory.Weight,
-                Id = accessory.Id
-            };
-        }
-
-        public static AccessoryResource MapToResource(this Accessory accessory)
-        {
-            return new AccessoryResource
-            {
-                Brand = accessory.Brand,
-                Name = accessory.Name,
-                Weight = accessory.Weight,
-                Id = accessory.Id
-            };
-        }
-
-    }
 }

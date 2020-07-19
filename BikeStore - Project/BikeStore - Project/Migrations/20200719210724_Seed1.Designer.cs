@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BikeStore___Project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200718144207_migration")]
-    partial class migration
+    [Migration("20200719210724_Seed1")]
+    partial class Seed1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,7 +54,7 @@ namespace BikeStore___Project.Migrations
                     b.ToTable("Accessories");
                 });
 
-            modelBuilder.Entity("BikeStore___Project.Data.Entities.Bike", b =>
+            modelBuilder.Entity("BikeStore___Project.Domain.Models.Bike", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -73,21 +73,37 @@ namespace BikeStore___Project.Migrations
                     b.Property<byte>("FrameType")
                         .HasColumnType("tinyint");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Bikes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 1,
+                            Color = "Red",
+                            FrameSize = (byte)3,
+                            FrameType = (byte)1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 2,
+                            Color = "Yellow",
+                            FrameSize = (byte)3,
+                            FrameType = (byte)4
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 3,
+                            Color = "Gray",
+                            FrameSize = (byte)3,
+                            FrameType = (byte)2
+                        });
                 });
 
             modelBuilder.Entity("BikeStore___Project.Domain.Models.Category", b =>
@@ -103,19 +119,36 @@ namespace BikeStore___Project.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Road Bike"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Mountain Bike"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Touring Bike"
+                        });
                 });
 
             modelBuilder.Entity("BikeStore___Project.Data.Entities.Accessory", b =>
                 {
-                    b.HasOne("BikeStore___Project.Data.Entities.Bike", "Bike")
-                        .WithMany("Accessories")
+                    b.HasOne("BikeStore___Project.Domain.Models.Bike", "Bike")
+                        .WithMany()
                         .HasForeignKey("BikeId");
                 });
 
-            modelBuilder.Entity("BikeStore___Project.Data.Entities.Bike", b =>
+            modelBuilder.Entity("BikeStore___Project.Domain.Models.Bike", b =>
                 {
                     b.HasOne("BikeStore___Project.Domain.Models.Category", "Category")
-                        .WithMany("Products")
+                        .WithMany("Bikes")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

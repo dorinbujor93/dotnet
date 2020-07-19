@@ -43,12 +43,19 @@ namespace BikeStore___Project
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Bike store API", Version = "v1"});
             });
 
+            // Repositories dependencies binding
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<ICategoryService, CategoryService>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IBikeRepository, BikeRepository>();
 
-            services.AddAutoMapper(typeof(Startup));
+            // Services dependencies binding
+            services.AddScoped<IBikeService, BikeService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllers();
+            services.AddAutoMapper(typeof(Startup));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

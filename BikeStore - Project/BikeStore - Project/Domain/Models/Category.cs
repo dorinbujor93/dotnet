@@ -10,6 +10,6 @@ namespace BikeStore___Project.Domain.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public IList<Bike> Products { get; set; } = new List<Bike>();
+        public ICollection<Bike> Bikes { get; set; } = new List<Bike>();
     }
 }
