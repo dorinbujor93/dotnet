@@ -12,6 +12,7 @@ This project allows a customer to buy a bike from our store.
 *  Unit of work
 *  Request-Response
 *  Dependency injection
+*  Repository
 
 ## Implemented Concepts
 * Database seeding
