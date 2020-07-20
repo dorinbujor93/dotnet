@@ -23,6 +23,9 @@ namespace BikeStore___Project.Mapping
             CreateMap<Accessory, AccessoryResource>()
                 .ForMember(src => src.AccessoryType,
                     opt => opt.MapFrom(src => src.AccessoryType.ToDescriptionString()));
+            CreateMap<User, UserResource>()
+                .ForMember(src => src.Gender,
+                    opt => opt.MapFrom(src => src.Gender.ToDescriptionString()));
         }
     }
 }

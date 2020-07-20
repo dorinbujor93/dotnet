@@ -4,14 +4,16 @@ using BikeStore___Project.Data.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BikeStore___Project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200720143032_Seed1s222")]
+    partial class Seed1s222
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,35 +55,6 @@ namespace BikeStore___Project.Migrations
                     b.HasIndex("BikeId");
 
                     b.ToTable("Accessories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AccessoryType = (byte)6,
-                            BikeId = 1,
-                            Brand = "Shimano",
-                            Name = "Altus",
-                            Weight = 100
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AccessoryType = (byte)2,
-                            BikeId = 2,
-                            Brand = "Kring",
-                            Name = "Lighting",
-                            Weight = 10
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AccessoryType = (byte)1,
-                            BikeId = 2,
-                            Brand = "Smith",
-                            Name = "Ringer",
-                            Weight = 15
-                        });
                 });
 
             modelBuilder.Entity("BikeStore___Project.Domain.Models.Bike", b =>

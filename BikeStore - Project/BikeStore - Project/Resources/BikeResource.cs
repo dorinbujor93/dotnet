@@ -15,7 +15,9 @@ namespace BikeStore___Project.Resources
         public EFrameType FrameType { get; set; }
         public EFrameSize FrameSize { get; set; }
         public CategoryResource Category { get; set; }
-   
+        public int BikeOwner { get; set; }
+
+
     }
 
 }

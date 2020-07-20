@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BikeStore___Project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200719230651_Seed0")]
-    partial class Seed0
+    [Migration("20200720143232_Add_seed")]
+    partial class Add_seed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -93,6 +93,9 @@ namespace BikeStore___Project.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("BikeOwnerId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -107,6 +110,8 @@ namespace BikeStore___Project.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BikeOwnerId");
+
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Bikes");
@@ -115,6 +120,7 @@ namespace BikeStore___Project.Migrations
                         new
                         {
                             Id = 1,
+                            BikeOwnerId = 2,
                             CategoryId = 1,
                             Color = "Red",
                             FrameSize = (byte)3,
@@ -123,6 +129,7 @@ namespace BikeStore___Project.Migrations
                         new
                         {
                             Id = 2,
+                            BikeOwnerId = 2,
                             CategoryId = 2,
                             Color = "Yellow",
                             FrameSize = (byte)3,
@@ -131,6 +138,7 @@ namespace BikeStore___Project.Migrations
                         new
                         {
                             Id = 3,
+                            BikeOwnerId = 3,
                             CategoryId = 3,
                             Color = "Gray",
                             FrameSize = (byte)3,
@@ -170,6 +178,71 @@ namespace BikeStore___Project.Migrations
                         });
                 });
 
+            modelBuilder.Entity("BikeStore___Project.Domain.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte>("Gender")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte>("Role")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "mike@mail.com",
+                            FirstName = "Mike",
+                            Gender = (byte)1,
+                            LastName = "Ekim",
+                            Role = (byte)2,
+                            Username = "mike.ekim"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "sally@mail.com",
+                            FirstName = "Sally",
+                            Gender = (byte)2,
+                            LastName = "Harry",
+                            Role = (byte)1,
+                            Username = "sally.harry"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "harry@mail.com",
+                            FirstName = "Harry",
+                            Gender = (byte)1,
+                            LastName = "Sally",
+                            Role = (byte)1,
+                            Username = "harry.sally"
+                        });
+                });
+
             modelBuilder.Entity("BikeStore___Project.Domain.Models.Accessory", b =>
                 {
                     b.HasOne("BikeStore___Project.Domain.Models.Bike", "Bike")
@@ -181,6 +254,12 @@ namespace BikeStore___Project.Migrations
 
             modelBuilder.Entity("BikeStore___Project.Domain.Models.Bike", b =>
                 {
+                    b.HasOne("BikeStore___Project.Domain.Models.User", "BikeOwner")
+                        .WithMany("Bikes")
+                        .HasForeignKey("BikeOwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("BikeStore___Project.Domain.Models.Category", "Category")
                         .WithMany("Bikes")
                         .HasForeignKey("CategoryId")

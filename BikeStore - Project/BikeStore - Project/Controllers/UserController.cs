@@ -14,24 +14,24 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BikeStore___Project.Controllers
 {
-    [Route("api/bikes/{id}/accessory")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class AccessoryController : ControllerBase
+    public class UserController : ControllerBase
     {
 
-        private readonly IAccessoryService _accessoryService;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
-        public AccessoryController(IMapper mapper, IAccessoryService accessoryService)
+        public UserController(IMapper mapper, IUserService userService)
         {
-            _accessoryService = accessoryService;
+            _userService = userService;
             _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<AccessoryResource>> ListAsync()
+        public async Task<IEnumerable<UserResource>> ListAsync()
         {
-            var accessories = await _accessoryService.ListAsync();
-            var resources = _mapper.Map<IEnumerable<Accessory>, IEnumerable<AccessoryResource>>(accessories);
+            var users = await _userService.ListAsync();
+            var resources = _mapper.Map<IEnumerable<User>, IEnumerable<UserResource>>(users);
             return resources;
         }
 

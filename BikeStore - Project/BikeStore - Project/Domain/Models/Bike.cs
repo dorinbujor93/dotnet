@@ -13,6 +13,7 @@ namespace BikeStore___Project.Domain.Models
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         public ICollection<Accessory> Accessories { get; set; } = new List<Accessory>();
-
+        public int BikeOwnerId { get; set; }
+        public User BikeOwner { get; set; }
     }
 }

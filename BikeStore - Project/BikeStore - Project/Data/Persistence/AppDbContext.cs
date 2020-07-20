@@ -13,6 +13,7 @@ namespace BikeStore___Project.Data.Persistence
 
         public DbSet<Bike> Bikes { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Accessory> Accessories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -21,37 +22,42 @@ namespace BikeStore___Project.Data.Persistence
 
             builder.Entity<Category>().HasData
             (
-                new Category {Id = 1, Name = "Road Bike"},
-                new Category {Id = 2, Name = "Mountain Bike"},
-                new Category {Id = 3, Name = "Touring Bike"}
+                new Category { Id = 1, Name = "Road Bike" },
+                new Category { Id = 2, Name = "Mountain Bike" },
+                new Category { Id = 3, Name = "Touring Bike" }
             );
 
-            builder.Entity<Accessory>().HasData
+            builder.Entity<User>().HasData
             (
-                new Accessory()
+                new User
                 {
                     Id = 1,
-                    Brand = "Shimano",
-                    Name = "Altus",
-                    Weight = 100,
-                    AccessoryType = EAccessoryType.Cyclocomputer
+                    FirstName = "Mike",
+                    LastName = "Ekim",
+                    Gender = EGender.Male,
+                    Role = EUserRoles.Staff,
+                    Email = "mike@mail.com",
+                    Username = "mike.ekim"
                 },
-                new Accessory()
+                new User
                 {
                     Id = 2,
-                    Brand = "Kring",
-                    Name = "Lighting",
-                    Weight = 10,
-                    AccessoryType = EAccessoryType.FrontLight
+                    FirstName = "Sally",
+                    LastName = "Harry",
+                    Gender = EGender.Female,
+                    Role = EUserRoles.Customer,
+                    Email = "sally@mail.com",
+                    Username = "sally.harry"
                 },
-                new Accessory()
+                new User
                 {
                     Id = 3,
-                    Brand = "Smith",
-                    Name = "Ringer",
-                    Weight = 15,
-                    BikeId = 2,
-                    AccessoryType = EAccessoryType.Bell
+                    FirstName = "Harry",
+                    LastName = "Sally",
+                    Gender = EGender.Male,
+                    Role = EUserRoles.Customer,
+                    Email = "harry@mail.com",
+                    Username = "harry.sally"
                 }
             );
 
@@ -63,6 +69,7 @@ namespace BikeStore___Project.Data.Persistence
                     FrameType = EFrameType.Aluminum,
                     FrameSize = EFrameSize.Medium,
                     Color = "Red",
+                    BikeOwnerId = 2,
                     CategoryId = 1
                 },
                 new Bike
@@ -71,6 +78,7 @@ namespace BikeStore___Project.Data.Persistence
                     FrameType = EFrameType.Steel,
                     FrameSize = EFrameSize.Medium,
                     Color = "Yellow",
+                    BikeOwnerId = 2,
                     CategoryId = 2
                 },
                 new Bike
@@ -79,7 +87,40 @@ namespace BikeStore___Project.Data.Persistence
                     FrameType = EFrameType.Carbon,
                     FrameSize = EFrameSize.Medium,
                     Color = "Gray",
+                    BikeOwnerId = 3,
                     CategoryId = 3
+                }
+            );
+
+
+            builder.Entity<Accessory>().HasData
+            (
+                new Accessory()
+                {
+                    Id = 1,
+                    Brand = "Shimano",
+                    Name = "Altus",
+                    Weight = 100,
+                    BikeId = 1,
+                    AccessoryType = EAccessoryType.Cyclocomputer
+                },
+                new Accessory()
+                {
+                    Id = 2,
+                    Brand = "Kring",
+                    Name = "Lighting",
+                    Weight = 10,
+                    BikeId = 2,
+                    AccessoryType = EAccessoryType.FrontLight
+                },
+                new Accessory()
+                {
+                    Id = 3,
+                    Brand = "Smith",
+                    Name = "Ringer",
+                    Weight = 15,
+                    BikeId = 2,
+                    AccessoryType = EAccessoryType.Bell
                 }
             );
         }
