@@ -23,7 +23,11 @@ This project allows a customer to buy a bike from our store.
 * Logger
 * Models
 * Validation
-* C# - Reflection
+* Reflection
+
+## Documentation links
+* https://www.tutorialspoint.com/csharp/csharp_reflection.htm
+
 
 # Note:
   Project is still in progress
