@@ -22,7 +22,13 @@ namespace BikeStore___Project.Domain.Models
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         public string Username { get; set; }
+        [Required]
+
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        public string Password { get; set; }
         public ICollection<Bike> Bikes { get; set; } = new List<Bike>();
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
 
     }
 }

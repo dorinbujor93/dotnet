@@ -48,12 +48,16 @@ namespace BikeStore___Project
             services.AddScoped<IBikeRepository, BikeRepository>();
             services.AddScoped<IAccessoryRepository, AccessoryRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IShopRepository, ShopRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
 
             // Services dependencies binding
             services.AddScoped<IBikeService, BikeService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IAccessoryService, AccessoryService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IShopService, ShopService>();
+            services.AddScoped<IOrderService, OrderService>();
 
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();

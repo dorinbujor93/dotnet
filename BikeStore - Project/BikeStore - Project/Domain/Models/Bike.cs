@@ -15,5 +15,7 @@ namespace BikeStore___Project.Domain.Models
         public ICollection<Accessory> Accessories { get; set; } = new List<Accessory>();
         public int BikeOwnerId { get; set; }
         public User BikeOwner { get; set; }
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
     }
 }

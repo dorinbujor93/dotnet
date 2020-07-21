@@ -15,6 +15,8 @@ namespace BikeStore___Project.Data.Persistence
         public DbSet<Category> Categories { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Accessory> Accessories { get; set; }
+        public DbSet<Shop> Shops { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -22,9 +24,9 @@ namespace BikeStore___Project.Data.Persistence
 
             builder.Entity<Category>().HasData
             (
-                new Category { Id = 1, Name = "Road Bike" },
-                new Category { Id = 2, Name = "Mountain Bike" },
-                new Category { Id = 3, Name = "Touring Bike" }
+                new Category {Id = 1, Name = "Road Bike"},
+                new Category {Id = 2, Name = "Mountain Bike"},
+                new Category {Id = 3, Name = "Touring Bike"}
             );
 
             builder.Entity<User>().HasData
@@ -37,7 +39,8 @@ namespace BikeStore___Project.Data.Persistence
                     Gender = EGender.Male,
                     Role = EUserRoles.Staff,
                     Email = "mike@mail.com",
-                    Username = "mike.ekim"
+                    Username = "mike.ekim",
+                    Password = "very_strong_pass"
                 },
                 new User
                 {
@@ -47,7 +50,8 @@ namespace BikeStore___Project.Data.Persistence
                     Gender = EGender.Female,
                     Role = EUserRoles.Customer,
                     Email = "sally@mail.com",
-                    Username = "sally.harry"
+                    Username = "sally.harry",
+                    Password = "very_strong_pass"
                 },
                 new User
                 {
@@ -57,7 +61,8 @@ namespace BikeStore___Project.Data.Persistence
                     Gender = EGender.Male,
                     Role = EUserRoles.Customer,
                     Email = "harry@mail.com",
-                    Username = "harry.sally"
+                    Username = "harry.sally",
+                    Password = "very_strong_pass"
                 }
             );
 
@@ -121,6 +126,25 @@ namespace BikeStore___Project.Data.Persistence
                     Weight = 15,
                     BikeId = 2,
                     AccessoryType = EAccessoryType.Bell
+                }
+            );
+            builder.Entity<Shop>().HasData
+            (
+                new Shop()
+                {
+                    Id = 1,
+                    Address = "Mihai Eminescu 23",
+                    Name = "Vello Express"
+                }
+            );
+            builder.Entity<Order>().HasData
+            (
+                new Order()
+                {
+                    Id = 1,
+                    ShopId = 1,
+                    UserId = 1,
+                    BikeId = 2,
                 }
             );
         }
