@@ -49,12 +49,9 @@ namespace BikeStore___Project.Services
             if (Hashing.GetHashString(existingShop.RowVersion) != eTag)
             {
                 return new ShopResponse("Incorrect eTag!");
-            }   
-
-            //TODO
-
-            existingShop.Name = shop.Name;
+            }
             existingShop.Address = shop.Address;
+            existingShop.Name = shop.Name;
 
             try
             {

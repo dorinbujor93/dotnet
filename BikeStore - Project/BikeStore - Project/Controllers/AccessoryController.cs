@@ -8,6 +8,7 @@ using BikeStore___Project.Data.Persistence;
 using BikeStore___Project.Domain.Models;
 using BikeStore___Project.Domain.Services;
 using BikeStore___Project.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ namespace BikeStore___Project.Controllers
 {
     [Route("api/bikes/{id}/accessory")]
     [ApiController]
+    [Authorize]
     public class AccessoryController : ControllerBase
     {
 

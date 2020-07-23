@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeStore - Project", "BikeStore - Project\BikeStore - Project.csproj", "{0306BF99-C59E-4ECC-8A2D-B7F457B3AB27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeStore - Project", "BikeStore - Project\BikeStore - Project.csproj", "{0306BF99-C59E-4ECC-8A2D-B7F457B3AB27}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeStoreClient", "BikeStoreClient\BikeStoreClient.csproj", "{7EDE774C-B366-4303-A8B5-4F3CBEA4363E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "IdentityServer\IdentityServer.csproj", "{8F2D2E9A-5D25-4950-8C5F-8915CAF31AB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeStoreTest", "BikeStoreTest\BikeStoreTest.csproj", "{07C49C75-E030-4234-84C8-86E38B5B4222}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{0306BF99-C59E-4ECC-8A2D-B7F457B3AB27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0306BF99-C59E-4ECC-8A2D-B7F457B3AB27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0306BF99-C59E-4ECC-8A2D-B7F457B3AB27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EDE774C-B366-4303-A8B5-4F3CBEA4363E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EDE774C-B366-4303-A8B5-4F3CBEA4363E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EDE774C-B366-4303-A8B5-4F3CBEA4363E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EDE774C-B366-4303-A8B5-4F3CBEA4363E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F2D2E9A-5D25-4950-8C5F-8915CAF31AB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F2D2E9A-5D25-4950-8C5F-8915CAF31AB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F2D2E9A-5D25-4950-8C5F-8915CAF31AB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F2D2E9A-5D25-4950-8C5F-8915CAF31AB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07C49C75-E030-4234-84C8-86E38B5B4222}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07C49C75-E030-4234-84C8-86E38B5B4222}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07C49C75-E030-4234-84C8-86E38B5B4222}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07C49C75-E030-4234-84C8-86E38B5B4222}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

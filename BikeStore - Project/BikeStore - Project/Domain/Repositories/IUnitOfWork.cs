@@ -7,6 +7,6 @@ namespace BikeStore___Project.Domain.Repositories
 {
    public interface IUnitOfWork
     {
-        Task CompleteAsync();
+        public Task CompleteAsync();
     }
 }

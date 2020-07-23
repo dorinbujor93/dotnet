@@ -9,6 +9,7 @@ using BikeStore___Project.Domain.Models;
 using BikeStore___Project.Domain.Services;
 using BikeStore___Project.Extensions;
 using BikeStore___Project.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 namespace BikeShop___Project.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class ShopController : ControllerBase
     {

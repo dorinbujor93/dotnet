@@ -63,6 +63,15 @@ namespace BikeStore___Project
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllers();
             services.AddAutoMapper(typeof(Startup));
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = "http://localhost:5050";
+                    options.RequireHttpsMetadata = false;
+                    options.Audience = "api1";
+                });
+            services.AddResponseCaching();
+            services.AddMemoryCache();
 
         }
 
@@ -74,8 +83,10 @@ namespace BikeStore___Project
             app.UseSwagger();
             app.UseMiddleware<RequestInfoMiddleware>();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Bike store API V1"); });
-
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+
         }
     }
 }
