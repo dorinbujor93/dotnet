@@ -18,5 +18,24 @@ namespace BikeStore___Project.Data.Persistence.Repositories
         {
             return await _context.Users.ToListAsync();
         }
+        public async Task AddAsync(User user)
+        {
+            await _context.Users.AddAsync(user);
+        }
+
+        public async Task<User> FindByIdAsync(int id)
+        {
+            return await _context.Users.FindAsync(id);
+        }
+        public void Update(User user)
+        {
+            _context.Entry(user).State = EntityState.Modified;
+            _context.Users.Update(user);
+        }
+
+        public void Remove(User user)
+        {
+            _context.Users.Remove(user);
+        }
     }
 }

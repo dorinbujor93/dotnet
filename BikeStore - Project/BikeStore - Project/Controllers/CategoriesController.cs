@@ -39,6 +39,22 @@ namespace BikeStore___Project.Controllers
             return resources;
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAsync(int id)
+        {
+            var category = await _categoryService.GetAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            var eTag = Hashing.GetHashString(category.RowVersion);
+            HttpContext.Response.Headers.Add("If-Match", eTag);
+
+            var resource = _mapper.Map<Category, CategoryResource>(category);
+
+            return Ok(resource);
+        }
 
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveCategoryResource resource)
@@ -62,9 +78,15 @@ namespace BikeStore___Project.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
 
+            var eTag = HttpContext.Request.Headers["If-Match"];
             var category = _mapper.Map<SaveCategoryResource, Category>(resource);
-            var result = await _categoryService.UpdateAsync(id, category);
+            var result = await _categoryService.UpdateAsync(id, category, eTag);
 
+            if (!HttpContext.Request.Headers.ContainsKey("If-Match"))
+            {
+                return new StatusCodeResult(412);
+            }
+ 
             if (!result.Success)
                 return BadRequest(result.Message);
 

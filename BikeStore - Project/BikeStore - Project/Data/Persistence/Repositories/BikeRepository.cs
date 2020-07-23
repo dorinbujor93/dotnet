@@ -19,5 +19,22 @@ namespace BikeStore___Project.Data.Persistence.Repositories
             return await _context.Bikes.Include(p => p.Category)
                 .ToListAsync();
         }
+        public async Task AddAsync(Bike bike)
+        {
+            await _context.Bikes.AddAsync(bike);
+        }
+        public async Task<Bike> FindByIdAsync(int id)
+        {
+            return await _context.Bikes.FindAsync(id);
+        }
+
+        public void Update(Bike bike)
+        {
+            _context.Bikes.Update(bike);
+        }
+        public void Remove(Bike bike)
+        {
+            _context.Bikes.Remove(bike);
+        }
     }
 }

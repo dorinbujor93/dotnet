@@ -18,5 +18,26 @@ namespace BikeStore___Project.Data.Persistence.Repositories
         {
             return await _context.Orders.ToListAsync();
         }
+        
+        public async Task AddAsync(Order order)
+        {
+            await _context.Orders.AddAsync(order);
+        }
+
+        public async Task<Order> FindByIdAsync(int id)
+        {
+            return await _context.Orders.FindAsync(id);
+        }
+
+        public void Update(Order order)
+        {
+            _context.Entry(order).State = EntityState.Modified;
+            _context.Orders.Update(order);
+        }
+
+        public void Remove(Order order)
+        {
+            _context.Orders.Remove(order);
+        }
     }
 }

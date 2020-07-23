@@ -111,16 +111,11 @@ namespace BikeStore___Project.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
-                    b.Property<int?>("ShopId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("BikeOwnerId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("ShopId");
 
                     b.ToTable("Bikes");
 
@@ -201,9 +196,6 @@ namespace BikeStore___Project.Migrations
                     b.Property<int>("BikeId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("LastModified")
-                        .HasColumnType("datetime2");
-
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate()
@@ -224,7 +216,6 @@ namespace BikeStore___Project.Migrations
                         {
                             Id = 1,
                             BikeId = 2,
-                            LastModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ShopId = 1,
                             UserId = 1
                         });
@@ -294,17 +285,12 @@ namespace BikeStore___Project.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
-                    b.Property<int?>("ShopId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ShopId");
 
                     b.ToTable("Users");
 
@@ -356,7 +342,7 @@ namespace BikeStore___Project.Migrations
             modelBuilder.Entity("BikeStore___Project.Domain.Models.Bike", b =>
                 {
                     b.HasOne("BikeStore___Project.Domain.Models.User", "BikeOwner")
-                        .WithMany("Bikes")
+                        .WithMany()
                         .HasForeignKey("BikeOwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -366,17 +352,6 @@ namespace BikeStore___Project.Migrations
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("BikeStore___Project.Domain.Models.Shop", null)
-                        .WithMany("Bikes")
-                        .HasForeignKey("ShopId");
-                });
-
-            modelBuilder.Entity("BikeStore___Project.Domain.Models.User", b =>
-                {
-                    b.HasOne("BikeStore___Project.Domain.Models.Shop", null)
-                        .WithMany("Users")
-                        .HasForeignKey("ShopId");
                 });
 #pragma warning restore 612, 618
         }

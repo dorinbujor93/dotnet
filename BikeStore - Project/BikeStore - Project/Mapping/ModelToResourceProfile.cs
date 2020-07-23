@@ -16,6 +16,9 @@ namespace BikeStore___Project.Mapping
             CreateMap<Category, CategoryResource>();
             CreateMap<Shop, ShopResource>();
             CreateMap<Order, OrderResource>();
+            CreateMap<Bike, SaveBikeResource>();
+            CreateMap<User, SaveUserResource>();
+            CreateMap<Order, SaveOrderResource>();
             CreateMap<Bike, BikeResource>()
                 .ForMember(src => src.FrameType,
                     opt => opt.MapFrom(src => src.FrameType.ToDescriptionString()));

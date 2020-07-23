@@ -11,7 +11,7 @@ namespace BikeStore___Project.Services
 {
     public class CategoryService : ICategoryService
     {
-		private readonly ICategoryRepository _categoryRepository;
+        private readonly ICategoryRepository _categoryRepository;
         private readonly IUnitOfWork _unitOfWork;
 
         public CategoryService(ICategoryRepository categoryRepository, IUnitOfWork unitOfWork)
@@ -23,6 +23,11 @@ namespace BikeStore___Project.Services
         public async Task<IEnumerable<Category>> ListAsync()
         {
             return await _categoryRepository.ListAsync();
+        }
+
+        public async Task<Category> GetAsync(int id)
+        {
+            return await _categoryRepository.FindByIdAsync(id);
         }
 
         public async Task<CategoryResponse> SaveAsync(Category category)
@@ -39,12 +44,17 @@ namespace BikeStore___Project.Services
                 return new CategoryResponse($"An error occurred when saving bike category: {ex.Message}");
             }
         }
-        public async Task<CategoryResponse> UpdateAsync(int id, Category category)
+
+        public async Task<CategoryResponse> UpdateAsync(int id, Category category, string eTag)
         {
             var existingCategory = await _categoryRepository.FindByIdAsync(id);
 
             if (existingCategory == null)
                 return new CategoryResponse("Category not found.");
+            if (Hashing.GetHashString(existingCategory.RowVersion) != eTag)
+            {
+                return new CategoryResponse("Incorrect eTag");
+            }
 
             existingCategory.Name = category.Name;
 

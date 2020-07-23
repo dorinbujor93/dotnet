@@ -4,17 +4,16 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using BikeStore___Project.Domain.Enums;
-using BikeStore___Project.Resources;
 
-namespace BikeStore___Project.Domain.Models
+namespace BikeStore___Project.Resources
 {
-    public class Order
+    public class SaveOrderResource
     {
-        public int Id { get; set; }
+        [Required]
         public int ShopId { get; set; }
+        [Required]
         public int UserId { get; set; }
+        [Required]
         public int BikeId { get; set; }
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
     }
 }

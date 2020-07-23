@@ -15,8 +15,11 @@ namespace BikeStore___Project.Mapping
         public ResourceToModelProfile()
         {
             CreateMap<SaveCategoryResource, Category>();
-            CreateMap<Shop, ShopResource>();
-            CreateMap<Order, OrderResource>();
+            CreateMap<SaveBikeResource, Bike>();
+            CreateMap<SaveUserResource, User>();
+            CreateMap<SaveOrderResource, Order>();
+            CreateMap<SaveShopResource, Shop>();
+
             CreateMap<BikeResource, Bike>()
                 .ForMember(src => src.FrameType,
                     opt => opt.MapFrom(src => (EFrameType) src.FrameType));

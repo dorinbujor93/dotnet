@@ -11,7 +11,9 @@ namespace BikeStore___Project.Domain.Services
     {
         Task<IEnumerable<Category>> ListAsync();
         Task<CategoryResponse> SaveAsync(Category category);
-        Task<CategoryResponse> UpdateAsync(int id, Category category);
+        Task<CategoryResponse> UpdateAsync(int id, Category category, string eTag);
         Task<CategoryResponse> DeleteAsync(int id);
+        Task<Category> GetAsync(int id);
+
     }
 }

@@ -9,5 +9,9 @@ namespace BikeStore___Project.Domain.Repositories
     public interface IUserRepository
     {
         Task<IEnumerable<User>> ListAsync();
+        Task AddAsync(User user);
+        Task<User> FindByIdAsync(int id);
+        void Remove(User user);
+        void Update(User user);
     }
 }

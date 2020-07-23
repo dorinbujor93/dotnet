@@ -8,16 +8,18 @@ using BikeStore___Project.Domain.Models;
 
 namespace BikeStore___Project.Resources
 {
-    public class BikeResource
+    public class SaveBikeResource
     {
-        public int Id { get; set; }
+        [Required]
+        [MaxLength(30)]
         public string Color { get; set; }
+        [Required]
         public EFrameType FrameType { get; set; }
+        [Required]
         public EFrameSize FrameSize { get; set; }
+        [Required]
         public int CategoryId { get; set; }
-        public ICollection<Accessory> Accessories { get; set; } = new List<Accessory>();
+        [Required]
         public int BikeOwnerId { get; set; }
     }
-
 }
-
