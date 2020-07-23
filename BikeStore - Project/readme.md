@@ -15,6 +15,7 @@ This project allows a customer to buy a bike from our store.
 *  Repository
 
 ## Implemented Concepts
+* eTAg
 * Database seeding
 * Extension methods
 * Enums
