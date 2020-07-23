@@ -15,6 +15,9 @@ This project allows a customer to buy a bike from our store.
 *  Repository
 
 ## Implemented Concepts
+* Identity Server
+* Testing demo
+* Consumer demo
 * eTAg
 * Database seeding
 * Extension methods
