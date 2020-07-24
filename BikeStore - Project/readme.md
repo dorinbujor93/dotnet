@@ -15,14 +15,15 @@ This project allows a customer to buy a bike from our store.
 *  Repository
 
 ## Implemented Concepts
-* Cancellation tokens
-* In-memory caching
-* Identity Server
-* Testing demo
-* Consumer demo
-* eTAg
-* Database seeding
+* Retry policy with poly (BikeStoreClient\Handlers\RetryPolicyDelegatingHandler.cs)
+* Cancellation tokens (BikeStore - Project\Controllers\BikesController.cs)
+* In-memory caching (BikeStore - Project\Data\Persistence\Repositories\BikeRepository.cs)
+* Testing demo (BikeStoreTest\BikeTest.cs)
+* eTAg (BikeStore - Project\Controllers\BikesController.cs)
+* Database seeding (BikeStore - Project\Data\Persistence\AppDbContext.cs)
+* Consume api routes(post/get/update/delete- BikeStore - Project\BikeStoreClient\Controllers\BikesConsumerController.cs)
 * Extension methods
+* Identity Server
 * Enums
 * Global exception handler
 * Middlewares 
@@ -34,6 +35,3 @@ This project allows a customer to buy a bike from our store.
 ## Documentation links
 * https://www.tutorialspoint.com/csharp/csharp_reflection.htm
 
-
-# Note:
-  Project is still in progress
