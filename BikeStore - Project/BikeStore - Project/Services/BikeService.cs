@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using BikeStore___Project.Domain.Models;
 using BikeStore___Project.Domain.Repositories;
@@ -20,9 +21,9 @@ namespace BikeStore___Project.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IEnumerable<Bike>> ListAsync()
+        public async Task<IEnumerable<Bike>> ListAsync(CancellationToken token)
         {
-            return await _bikeRepository.ListAsync();
+            return await _bikeRepository.ListAsync(token);
         }
 
         public async Task<Bike> GetAsync(int id)

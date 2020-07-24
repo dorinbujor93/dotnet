@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using BikeStore___Project.Data;
@@ -18,8 +19,8 @@ using Microsoft.EntityFrameworkCore;
 namespace BikeStore___Project.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
     [ApiController]
+    [Authorize]
     public class BikesController : ControllerBase
     {
         private readonly IBikeService _bikeService;
@@ -31,9 +32,9 @@ namespace BikeStore___Project.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<BikeResource>> ListAsync()
+        public async Task<IEnumerable<BikeResource>> ListAsync(CancellationToken token)
         {
-            var bikes = await _bikeService.ListAsync();
+            var bikes = await _bikeService.ListAsync(token);
             var resources = _mapper.Map<IEnumerable<Bike>, IEnumerable<BikeResource>>(bikes);
             return resources;
         }
