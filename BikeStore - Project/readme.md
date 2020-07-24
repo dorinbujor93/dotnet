@@ -15,6 +15,8 @@ This project allows a customer to buy a bike from our store.
 *  Repository
 
 ## Implemented Concepts
+* Cancellation tokens
+* In-memory caching
 * Identity Server
 * Testing demo
 * Consumer demo
