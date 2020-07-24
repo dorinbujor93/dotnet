@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using BikeStore___Project.Data;
-using BikeStore___Project.Data.Persistence;
 using BikeStore___Project.Domain.Models;
 using BikeStore___Project.Domain.Services;
 using BikeStore___Project.Extensions;
 using BikeStore___Project.Resources;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

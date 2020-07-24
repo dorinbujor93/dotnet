@@ -39,10 +39,8 @@ namespace BikeStoreClient.Handlers
                 {
                     return response;
                 }
-                else
-                {
-                    _logger.LogInformation($"Retry {i}...");
-                }
+
+                _logger.LogInformation($"Retry {i}...");
             }
 
             return response;

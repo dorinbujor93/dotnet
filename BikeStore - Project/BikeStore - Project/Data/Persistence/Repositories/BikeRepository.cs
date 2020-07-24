@@ -51,6 +51,9 @@ namespace BikeStore___Project.Data.Persistence.Repositories
 
         public async Task AddAsync(Bike bike)
         {
+            //Invalidation example
+            _memCache.Remove("getAllBikes");
+            _logger.LogInformation("Bikes cache invalidated!");
             await _context.Bikes.AddAsync(bike);
         }
 
@@ -61,6 +64,9 @@ namespace BikeStore___Project.Data.Persistence.Repositories
 
         public void Update(Bike bike)
         {
+            //Invalidation example
+            _memCache.Remove("getAllBikes");
+            _logger.LogInformation("Bikes cache invalidated!");
             _context.Bikes.Update(bike);
         }
 

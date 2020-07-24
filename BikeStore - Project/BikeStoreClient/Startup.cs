@@ -26,12 +26,13 @@ namespace BikeStoreClient
             services.AddScoped<LoggingDelegatingHandler>();
             services.AddScoped<RetryPolicyDelegatingHandler>();
 
-            services.AddHttpClient("hotels", client =>
+            services.AddHttpClient("bikes", client =>
                 {
-                    client.BaseAddress = new Uri("http://localhost:5000/");
                     client.Timeout = TimeSpan.FromMinutes(1);
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+
                 })
                 .AddHttpMessageHandler<RetryPolicyDelegatingHandler>()
                 .AddHttpMessageHandler<LoggingDelegatingHandler>();
